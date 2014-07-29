@@ -61,3 +61,4 @@ migrations/
 
 # This contains some secret stuff, so best to not include it
 wedding/settings.py
+wedding/settings.py.bak
