@@ -52,13 +52,9 @@ coverage.xml
 # Sphinx documentation
 docs/_build/
 
-## static and media files for the website, these are generated from the collectstatic command
-#static/
-#media/
-#
-## But we are going to allow the wedding/static and wedding/media directories, these are hand written files
-#!wedding/static/
-#!wedding/media/
-
 # I want to ignore migration files since those are generated and not part of the source code
 migrations/
+
+# Also ignoring databases
+*.db
+*.sqlite3
