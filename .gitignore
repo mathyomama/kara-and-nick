@@ -58,3 +58,6 @@ migrations/
 # Also ignoring databases
 *.db
 *.sqlite3
+
+# This contains some secret stuff, so best to not include it
+wedding/settings.py

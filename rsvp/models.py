@@ -15,7 +15,7 @@ class Person(models.Model):
 	last_name = models.CharField(max_length=20)
 	email = models.EmailField()
 	medical_issues = models.CharField(max_length=200)
-	updates = models.BooleanField()
+	updates = models.BooleanField(default=False)
 
 	def __unicode__(self):
 		return ' '.join((self.first_name, self.last_name))
