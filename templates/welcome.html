@@ -1,5 +1,21 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>You should put something here</h1>
+<center>
+	<img src="../media/{{ greeting.image }}" width=200>
+</center>
+{{ greeting.description }}
+<div class="signature">
+Kara and Nick
+</div>
+Updates:
+{% for update in update_entries %}
+{{ update }}<br>
+{% endfor %}
+
+Weather:
+{% for day in weather %}
+{{ day.day }}, {{ day.date }} : {{ day.text }} <br>
+{% endfor %}
+
 {% endblock %}

@@ -1,5 +1,14 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>You should put something here</h1>
+Our Story
+<br>
+|
+{% for video_clip in video_clips %}
+<a href="../media/{{ video_clip.path }}">{{ video_clip.title }}</a> |
+{% endfor %}
+<br>
+<div id="clip_title">
+</div>
+<embed src="">
 {% endblock %}
