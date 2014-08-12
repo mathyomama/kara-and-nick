@@ -3,9 +3,9 @@ from localflavor.us.models import PhoneNumberField
 
 # Create your models here.
 class Contact(models.Model):
-	name = models.CharField(max_length=30)
-	phone = PhoneNumberField()
-	email = models.EmailField()
+    name = models.CharField(max_length=30)
+    phone = PhoneNumberField()
+    email = models.EmailField()
 
-	def __unicode__(self):
-		return self.name
+    def __unicode__(self):
+        return self.name

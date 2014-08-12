@@ -4,8 +4,8 @@ from .models import GalleryEntry, GalleryUploadEntry
 # Register your models here.
 @admin.register(GalleryEntry)
 class GalleryEntryAdmin(admin.ModelAdmin):
-	pass
+    pass
 
 @admin.register(GalleryUploadEntry)
 class GalleryUploadEntryAdmin(admin.ModelAdmin):
-	pass
+    pass

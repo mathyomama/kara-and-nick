@@ -4,8 +4,8 @@ from .models import ItineraryEntry, WhatToExpect
 # Register your models here.
 @admin.register(ItineraryEntry)
 class ItineraryEntryAdmin(admin.ModelAdmin):
-	pass
+    pass
 
 @admin.register(WhatToExpect)
 class WhatToExpectAdmin(admin.ModelAdmin):
-	pass
+    pass

@@ -10,8 +10,8 @@ def index(request):
     context_dict = dict()
     greeting = Welcome.objects.all()
     context_dict['greeting'] = greeting[0]
-	update_entries = WelcomeUpdateEntry.objects.all()
-	context_dict['updates'] = update_entries
+    update_entries = WelcomeUpdateEntry.objects.all()
+    context_dict['updates'] = update_entries
 
     weather_client = yweather.Client()
     bayanihan_woeid = weather_client.fetch_woeid("Tampa, Florida 33626")

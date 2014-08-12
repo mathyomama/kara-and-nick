@@ -4,8 +4,8 @@ from .models import Account, Person
 # Register your models here.
 @admin.register(Account)
 class AccountAdmin(admin.ModelAdmin):
-	pass
+    pass
 
 @admin.register(Person)
 class PersonAdmin(admin.ModelAdmin):
-	pass
+    pass
