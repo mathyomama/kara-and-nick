@@ -18,5 +18,6 @@ urlpatterns = patterns('',
     url(r'^wedding_party/', include('wedding_party.urls')),
     url(r'^things_to_do/', include('things_to_do.urls')),
     url(r'^welcome/', include('welcome.urls')),
-    url(r'^$', 'welcome.views.index', name='homepage'),
+    url(r'^$', include('login.urls')),
+    url(r'^login/$', include('login.urls')),
 )
