@@ -1,5 +1,21 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>You should put something here</h1>
+<center>
+	<div class="pagetitle">Gallery</div>
+	{% for pic in pic_urls %}
+	<hr>
+	<div class="frame_scrapbook">
+			<img width="80%" src="{{ pic }}"><br>
+
+				<div class="upper_left"></div>
+					<div class="upper_right"></div>
+						<div class="lower_left"></div>
+							<div class="lower_right"></div>
+
+	</div>
+	Selfieeeee.
+	<hr>
+{% endfor %}
+</center>
 {% endblock %}

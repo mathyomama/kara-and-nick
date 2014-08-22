@@ -1,17 +1,37 @@
 {% extends "base.html" %}
 
 {% block content %}
+{{ coming_from }}
 
 {% if form.errors %}
 <p>Your username and password didn't match. Please try again.</p>
 {% endif %}
+<div class="container-fluid">
+	<div class="col-sm-3 col-md-4">
+		<!--left div for positioning the middle class-->
+	</div>
+	<div class="jumbotron col-xs-12 col-sm-6 col-md-4">
+		<h2>Please Sign In</h2>
+		<div class="container">
+			<form role="role" method="post" id="login" action="/login/">
+				{% csrf_token %}
 
-<form method="post" action="login/">
-{% csrf_token %}
-Username: <input type="text" id="username" name="username" value="" size="50" />
-<br />
-Password: <input type="password" id="password" name="password" value="" size="50" />
-<br />
- <input type="submit" value="submit" />
-</form>
+				{% for field in form.visible_fields %}
+				<div class="form-group">
+					{{ field.errors }}
+					{{ field.help_text }}
+					<label for="{{ field.id_for_label }}">{{ field.label }}</label>
+					<input class="form-control" type="{{ field.field.widget.input_type }}" id="{{ field.auto_id }}" name="{{ field.html_name }}" placeholder="{{ field.name }}">
+				</div>
+				{% endfor %}
+
+				<input class="btn btn-default" type="submit" value="Sign In" />
+			</form>
+		</div>
+	</div>
+	<div class="col-sm-3 col-md-4">
+		<!--right div for positioning the middle class-->
+	</div>
+</div>
+
 {% endblock %}

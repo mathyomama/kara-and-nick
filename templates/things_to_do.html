@@ -1,5 +1,10 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>You should put something here</h1>
+<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5/leaflet.css" />
+<script src="http://cdn.leafletjs.com/leaflet-0.5/leaflet.js"></script>
+<center>
+<div class="pagetitle">Things to do</div>
+</center>
+{{ source | safe }}
 {% endblock %}

@@ -1,14 +1,20 @@
 {% extends "base.html" %}
 
 {% block content %}
-Our Story
-<br>
-|
-{% for video_clip in video_clips %}
-<a href="../media/{{ video_clip.path }}">{{ video_clip.title }}</a> |
-{% endfor %}
-<br>
-<div id="clip_title">
+<div class="col-md-12">
+	<center>
+		<div class="pagetitle">
+			Our Story
+		</div>
+	</center>
+	<br>
+	{% for video_clip in video_clips %}
+	<a href="../media/{{ video_clip.path }}">{{ video_clip.title }}</a> |
+	{% endfor %}
+	<br>
+	<div width=100%>
+		<div style="position: absolute;"></div>
+		<iframe width="100%" height="699px" style="position:absolute; z-index:-2;"src="//www.youtube.com/embed/qUJYqhKZrwA?autoplay=0&showinfo=0&controls=0" frameborder="0" allowfullscreen></iframe>
+	</div>
 </div>
-<embed src="">
 {% endblock %}

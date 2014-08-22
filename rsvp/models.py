@@ -6,7 +6,6 @@ import sys
 
 # Create your models here.
 class Account(models.Model):
-
     user = models.OneToOneField(User)
     reservations = models.PositiveIntegerField()
 

@@ -2,20 +2,53 @@
 
 {% block content %}
 <center>
-	<img src="../media/{{ greeting.image }}" width=200>
+<div class="pagetitle">Welcome!</div>
+<div class="frame_scrapbook">
+   <img	src="../media/{{ greeting.image }}" width=80%>
+
+	<div class="upper_left"></div>
+		<div class="upper_right"></div>
+			<div class="lower_left"></div>
+				<div class="lower_right"></div>
+	</div>
 </center>
+<br>
+<div class="col-sm-1 col-md-1"></div>
+<div id="note-container" class="col-sm-10 col-md-10">
+<div>
 {{ greeting.description }}
-<div class="signature">
+</div>
+<br>
+<div class="signature text-center">
 Kara and Nick
 </div>
-Updates:
+<hr>
+<b>Updates:</b>
+<div id="updates" class="col-sm-12 col-md-12">
 {% for update in update_entries %}
+<div class="col-sm-12 col-md-12">
 {{ update }}<br>
 {% endfor %}
+</div>
+<hr>
+<b>Weather:</b>
+<hr>
+<div id="weather_updates" class="col-sm-10 col-md-10">
+	{% for day in weather %}
+	<div class="col-md-12">
+		<div class="col-md-4" >
+			<div class="day d-03" style="float:right;"></div>
+			<div class="month m-04" style="float:right;"></div>
+		</div>
+		<div class="col-md-8" >
+			<span style="vertical-align:middle;display: inline-block;" >
+			{{ day.text }}
+		</span>
+		</div>
+	</div>
+	{% endfor %}
+</div>
 
-Weather:
-{% for day in weather %}
-{{ day.day }}, {{ day.date }} : {{ day.text }} <br>
-{% endfor %}
+<div class="col-sm-1 col-md-1"></div>
 
 {% endblock %}

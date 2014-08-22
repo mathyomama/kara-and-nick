@@ -1,5 +1,13 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>You should put something here</h1>
+<center>
+<div class="pagetitle">Registry</div>
+</center>
+{% for registry_location in registry_list %}
+<div class="col-sm-4 col-md-4" name="registry_image">
+	<img src="{{ registry_location.image }}">
+	<a href="{{ registry_location.link }}">{{ registry_location.name }}</a>
+</div>
+{% endfor %}
 {% endblock %}

@@ -1,0 +1,21 @@
+{% extends "guestbook/base.html" %}
+
+{% block guestbook_content %}
+{% for entry in guestbook_entries %}
+<div class="row">
+	<div class="row">
+		<div class="col-xs-6 text-left">
+			<h3>{{ entry.person }}</h3>
+		</div>
+		<div class="col-xs-6 text-right">
+			<h3>{{ entry.location }}</h3>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12 text-justify">
+			<p>{{ entry.note }} <a href="{{ entry.get_absolute_url }}" class="text-primary">Read More</a></p>
+		</div>
+	</div>
+</div>
+{% endfor %}
+{% endblock %}

@@ -1,9 +1,45 @@
 {% extends "base.html" %}
-
 {% block content %}
-{% for i in posts %}
-{{ i }}<br>
+<script type="text/javascript">
+$(document).ready(function(){
+
+		  $("#my_form").submit(function(){
+			      $.post("",
+					      {name:"Donald Duck",
+						       city:"Duckburg",
+							        csrfmiddlewaretoken:'{{ csrf_token }}'
+									     },
+										     function(data,status){
+											       alert("Data: " + data + "\nStatus: " + status);
+												       })
+				      .fail(function(xhr) {
+						          console.log("Error: " + xhr.statusText);
+								          alert("Error: " + xhr.statusText);
+										      });
+					      return false;
+						    });
+
+		  });
+</script>
+User comment:
+<form id="my_form" action="" method="post">{% csrf_token %}
+	<input type="submit" value="Send">
+</form>
+Clicks {{ clicks }}
+Posted comments:
+
+
+{% for guestbook_entry in posts %}
+	{{ guestbook_entry }}
+	<br>
+	{% if guestbook_entry.user == current_user %}
+	<form="#" action="post">
+		<input type="hidden" name="delete" value="{{guestbook_entry.comment_number}}">
+		<input type="button" value="Delete">
+		</input>
+	</form>
+	{% endif %}
+	<br>
 {% endfor %} 
 {{ apple }}
-{{ ba }}
 {% endblock %}
