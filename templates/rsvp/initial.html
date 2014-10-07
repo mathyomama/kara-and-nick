@@ -1,0 +1,72 @@
+{% extends "rsvp/base.html" %}
+
+
+{% block right_side %}
+<!-- some kind of description of the process of filling out the form -->
+<div id="rsvp-main-section" class="col-md-12 col-lg-12">
+	<div id="title" class="text-center">
+		<h1>RSVP</h1>
+	</div>
+	<hr class="fancy">
+	<div id="instructions" class="text-justify">
+		<p>{{ instructions|safe }}</p>
+	</div>
+	<div id="add-button-row" class="text-right">
+		<a data-toggle="modal" data-target="#form-modal" href="/rsvp/create/"><button id="add-button" class="btn btn-primary">Add Person</button></a>
+	</div>
+	<div id="submissions">
+		{% for person in people %}
+		<div id={{ person.get_html_id }} class="row person-data">
+			<hr class="fancy visible-xs-block">
+			<div class="row first-name">
+				<label class="col-sm-3 col-md-3 text-right">{{ label.first_name }}</label>
+				<p class="col-sm-9 col-md-9">{{ person.first_name }}</p>
+			</div>
+			<div class="row last-name">
+				<label class="col-sm-3 col-md-3 text-right">{{ label.last_name }}</label>
+				<p class="col-sm-9 col-md-9">{{ person.last_name }}</p>
+			</div>
+			<div class="row dietary-concerns" data-field="dietary-concerns">
+				<label class="col-sm-3 col-md-3 text-right">{{ label.dietary_concerns }}</label>
+				<p class="col-sm-9 col-md-9">{{ person.dietary_concerns }}</p>
+			</div>
+			<div class="row email">
+				<label class="col-sm-3 col-md-3 text-right">{{ label.email}}</label>
+				<p class="col-sm-9 col-md-9">{{ person.email }}</p>
+			</div>
+			<div class="row updates">
+				<label class="col-sm-3 col-md-3 text-right">{{ label.updates }}</label>
+				<p class="col-sm-9 col-md-9">
+					{% if person.updates %}
+					yes
+					{% else %}
+					no
+					{% endif %}
+				</p>
+			</div>
+			<div class="col-sm-12 col-md-12 col-lg-12 text-right">
+				<p>
+					<a data-toggle="modal" data-target="#form-modal" href="{{ person.get_absolute_update_url }}"><button class="btn btn-info">Edit</button></a>
+					<a data-toggle="modal" data-target="#form-modal" href="{{ person.get_absolute_delete_url }}"><button class="btn btn-danger">Delete</button></a>
+				</p>
+			</div>
+		</div>
+		{% endfor %}
+	</div>
+</div>
+{% endblock right_side %}
+
+{% block js_template %}
+<script type="text/html" id="submission-template">
+{% include "rsvp/person_submission.html" %}
+</script>
+{% endblock js_template %}
+
+{% block modal %}
+<div class="modal fade" id="form-modal" tabindex="-1" role="dialog" aria-labelledby="modal-title" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+		</div>
+	</div>
+</div>
+{% endblock modal %}

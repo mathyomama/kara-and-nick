@@ -1,8 +1,35 @@
 {% extends "base.html" %}
 
-{% block content %}
+{% block letter_content %}
 <center>
-<div class="pagetitle">Contacts</div>
+<div class="pagetitle">
+	<br>
+	Contacts
+<hr class="fancy" width=75%>
+</div>
 </center>
 
-{% endblock %}
+<table class="table table-striped" style="text-align:center;">
+	<thead>
+		<td> Name </td>
+		<td> Email </td>
+		<td> Phone </td>
+	</thead>
+	<tbody>
+		{% for contact in contacts %}
+		<tr>
+			<td>
+				{{ contact.name }}
+			</td>
+			<td>
+				{{ contact.email }}
+			</td>
+			<td>
+				{{ contact.phone }}
+			</td>
+		</tr>
+		{% endfor %}
+	</tbody>
+	</table>
+
+{% endblock letter_content %}

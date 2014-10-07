@@ -1,7 +1,82 @@
 {% extends "base.html" %}
 
-{% block content %}
+{% block letter_content %}
+<div style="min-height:100%; height:100%;">
 <center>
-<div class="pagetitle">Wedding Party</div>
+	<div class="pagetitle">
+		<br>
+		Wedding Party
+		<hr class="fancy" width=75%>
+	</div>
 </center>
+<script>
+function toggle_visibility(id) {
+	var responsibilities = document.getElementsByClassName("responsibility-div");
+	for(var i = 0; i < responsibilities.length; i++)
+	{
+		responsibilities[i].style.visibility="hidden";
+		responsibilities[i].style.display="none";
+	}
+	visible_responsibility = document.getElementById(id);
+	visible_responsibility.style.visibility="visible";
+	visible_responsibility.style.display="block";
+}	
+</script>
+<div >
+|&nbsp;
+{% for enum, responsibility in responsibilities %}
+<div class="responsibility_link_text" style="display:inline;">
+<b><a  href="#" onclick="toggle_visibility('responsibility_{{ forloop.counter }}');">{{ responsibility }}</a></b>&nbsp;|&nbsp;
+{% if forloop.counter|divisibleby:3 %}
+<br>
+{% endif %}
+</div>
+{% endfor %}
+</div>
+{% for enum, responsibility in responsibilities %}
+<div class="responsibility-div" id="responsibility_{{ forloop.counter }}">
+	<div>
+		<center>
+			<div class="responsibility_title_text">
+			<b>{{ responsibility }}</b>
+		</div>
+		</center>
+		<br>
+	</div>
+	<div style="margin: 0 auto;">
+		<center>
+	{% for pm in party_members %}
+		
+		{% if pm.responsibility == enum %}
+		<div style="float: left;">
+			<div class="party_member_name_text">
+			<b>{{ pm.name }}</b><br>
+		</div>
+			<div class="party_member_relation_text">
+			{{ pm.relation_to_engaged }} <br>
+		</div>
+			<img class="img-circle" width=50% src="../media/{{ pm.image }}"><br>
+			<div class="party_member_story_text">
+			{{ pm.story }} 
+		</div>
+		</div>
+		{% endif %}
+	{% endfor %}
+		</center>
+	</div>
+</div>
+{% endfor %}
+<script>
+document.body.onload=function()
+{
+	var responsibilities = document.getElementsByClassName("responsibility-div");
+	for(var i = 0; i < responsibilities.length; i++)
+	{
+		responsibilities[i].style.visibility="hidden";
+		responsibilities[i].style.display="none";
+	}
+}
+</script>
 {% endblock %}
+
+

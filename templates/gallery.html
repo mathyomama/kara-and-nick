@@ -1,21 +1,25 @@
 {% extends "base.html" %}
 
-{% block content %}
+{% block letter_content %}
 <center>
-	<div class="pagetitle">Gallery</div>
-	{% for pic in pic_urls %}
+	<div class="pagetitle">
+		<br>
+		Gallery
+<hr class="fancy" width=75%>
+	</div>
+	{% for pic_url, pic_caption in pic_list%}
 	<hr>
 	<div class="frame_scrapbook">
-			<img width="80%" src="{{ pic }}"><br>
-
-				<div class="upper_left"></div>
-					<div class="upper_right"></div>
-						<div class="lower_left"></div>
-							<div class="lower_right"></div>
-
+		<img width="100%" src="{{ pic_url }}"><br>
+		<div class="upper_left"></div>
+		<div class="upper_right"></div>
+		<div class="lower_left"></div>
+		<div class="lower_right"></div>
 	</div>
-	Selfieeeee.
+	<div class="pic_caption_text">
+	{{ pic_caption }} 
+</div>
 	<hr>
 {% endfor %}
 </center>
-{% endblock %}
+{% endblock letter_content %}

@@ -1,0 +1,20 @@
+{% extends "modal_base.html" %}
+
+{% load static %}
+
+{% block modal_content %}
+<div class="modal-header">
+	<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+	<h4>{{ form_title }}</h4>
+</div>
+<div class="modal-body">
+	<form id="person-form" action="{{ person.get_absolute_delete_url }}" method="post">
+		{% csrf_token %}
+		<h2>{{ form_message }}</h2>
+		<button id="submit" class="btn btn-danger" type="submit">yes</button>
+		<button class="btn btn-default" type="button" data-dismiss="modal">cancel</button>
+	</form>
+</div>
+<div class="modal-footer">
+</div>
+{% endblock modal_content %}

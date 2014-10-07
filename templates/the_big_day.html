@@ -1,18 +1,42 @@
 {% extends "base.html" %}
 
-{% block content %}
+{% block letter_content %}
 <center>
-<div class="pagetitle">The Big Day</div>
+<div class="pagetitle">
+	<br>
+	The Big Day
+<hr class="fancy" width=75%>
+</div>
 </center>
-<div class="col-sm-4 col-md-4" id="itinerary">
-	<div class="col-sm-4 col-md-4" id="ceremony">
-			
+<div class="col-sm-12 col-md-12" id="itinerary">
+	<div class="c_and_r_title_text">
+		Ceremony and Reception
 	</div>
-	<div class="col-sm-4 col-md-4" id="reception">
-			
+	<div class="col-sm-12 col-md-12" id="itinerary entries">
+		{% for entry in  itinerary_entries %}
+		<div class="event_title_text">
+		{{ entry.title }}		<br>
 	</div>
-	<div class="col-sm-4 col-md-4" id="after_party">
-
+	<div class="event_time_text">
+		{{ entry.time }}	<br>	
+	</div>
+	<div class="event_description_text">
+		{{ entry.description }}<br>		
+	</div>
+		{% endfor %}
+	</div>
+	<hr>
+	<div class="c_and_r_title_text">
+	What to Expect
+	</div>
+	<div class="col-sm-12 col-md-12" id="what_to_expect">
+		<div class="what_to_expect_title_text">
+		{% for entry in  what_to_expect_entries %}
+	</div>
+		{{ entry.title }}		<br>
+		{{ entry.time }}	<br>	
+		{{ entry.description }}<br>		
+		{% endfor %}
 	</div>
 </div>
 {% endblock %}

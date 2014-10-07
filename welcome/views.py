@@ -1,10 +1,12 @@
 from django.shortcuts import render, render_to_response
 from django.template import RequestContext
+from django.contrib.auth.decorators import login_required
 import yweather
 from .models import Welcome
 from .models import WelcomeUpdateEntry
 
 # Create your views here.
+@login_required
 def index(request):
     context = RequestContext(request)
     context_dict = dict()
@@ -19,7 +21,4 @@ def index(request):
     weather_forecast = weather_dict['forecast']
     context_dict['weather'] = weather_forecast
 
-
     return render_to_response('welcome.html', context_dict, context)
-
-

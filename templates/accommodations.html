@@ -1,9 +1,28 @@
 {% extends "base.html" %}
 
-{% block content %}
+{% block letter_content %}
 
 <center>
+<br>
 <div class="pagetitle">Accommodations</div>
-</center>
+<hr class="fancy" width=75%>
+{% for accommodation in accommodations %}
 
-{% endblock %}
+<div class="accommodation_name_text">
+{{ accommodation.name }}
+</div>
+<br> 
+<a href="{{ accommodation.url }}">Book Your Room</a>
+<hr>
+<img width=30% class="img-rounded " src="../../media/{{ accommodation.image1 }}">
+<img width=30% class="img-rounded " src="../../media/{{ accommodation.image2 }}">
+<img width=30% class="img-rounded " src="../../media/{{ accommodation.image3 }}">
+<br>
+<hr>
+</center>
+<div class="accommodation_description_text">
+	{{ accommodation.description | safe }}
+</div>
+{% endfor %}
+
+{% endblock letter_content %}

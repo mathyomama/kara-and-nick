@@ -1,54 +1,55 @@
 {% extends "base.html" %}
 
-{% block content %}
-<center>
-<div class="pagetitle">Welcome!</div>
-<div class="frame_scrapbook">
-   <img	src="../media/{{ greeting.image }}" width=80%>
+{% block letter_content %}
 
-	<div class="upper_left"></div>
+<div class="header col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-6">
+	<div class="welcome_title"><font face="Sacramento">Welcome</font></div>
+	<br>
+	<div class="frame_scrapbook">
+		<img src="../media/{{ greeting.image }}" width=100%>
+		<div class="upper_left"></div>
 		<div class="upper_right"></div>
-			<div class="lower_left"></div>
-				<div class="lower_right"></div>
+		<div class="lower_left"></div>
+		<div class="lower_right"></div>
 	</div>
-</center>
-<br>
-<div class="col-sm-1 col-md-1"></div>
-<div id="note-container" class="col-sm-10 col-md-10">
-<div>
-{{ greeting.description }}
 </div>
-<br>
-<div class="signature text-center">
-Kara and Nick
-</div>
-<hr>
-<b>Updates:</b>
-<div id="updates" class="col-sm-12 col-md-12">
-{% for update in update_entries %}
-<div class="col-sm-12 col-md-12">
-{{ update }}<br>
-{% endfor %}
-</div>
-<hr>
-<b>Weather:</b>
-<hr>
-<div id="weather_updates" class="col-sm-10 col-md-10">
-	{% for day in weather %}
-	<div class="col-md-12">
-		<div class="col-md-4" >
-			<div class="day d-03" style="float:right;"></div>
-			<div class="month m-04" style="float:right;"></div>
+<div id="note-container" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+	<div class="welcome_text">
+		{{ greeting.description | safe }}
+	</div>
+	<br>
+	<div class="signature">
+		Kara and Nick
+	</div>
+	<hr>
+	{% comment "Weather and Updates" %}
+	<b>Updates:</b>
+	<div id="updates" class="col-sm-12 col-md-12">
+		{% for update in update_entries %}
+		<div class="col-sm-12 col-md-12">
+			{{ update }}
+			<br>
 		</div>
-		<div class="col-md-8" >
-			<span style="vertical-align:middle;display: inline-block;" >
-			{{ day.text }}
-		</span>
+		{% endfor %}
+		<hr>
+		<b>Weather:</b>
+		<hr>
+		<div id="weather_updates" class="col-sm-10 col-md-10">
+			{% for day in weather %}
+			<div class="col-md-12">
+				<div class="col-md-4" >
+					<div class="day d-03" style="float:right;"></div>
+					<div class="month m-04" style="float:right;"></div>
+				</div>
+				<div class="col-md-8">
+					<span style="vertical-align:middle;display: inline-block;">
+						{{ day.text }}
+					</span>
+				</div>
+			</div>
+			{% endfor %}
 		</div>
 	</div>
-	{% endfor %}
+	{% endcomment %}
 </div>
-
-<div class="col-sm-1 col-md-1"></div>
-
-{% endblock %}
+{% endblock letter_content %}

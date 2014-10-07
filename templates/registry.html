@@ -1,13 +1,20 @@
 {% extends "base.html" %}
 
-{% block content %}
+{% block letter_content %}
 <center>
-<div class="pagetitle">Registry</div>
+<div class="pagetitle">
+	<br>
+	Registry
+<hr class="fancy" width=75%>
+</div>
 </center>
-{% for registry_location in registry_list %}
+{% for registry_entry in registry_entries %}
 <div class="col-sm-4 col-md-4" name="registry_image">
-	<img src="{{ registry_location.image }}">
-	<a href="{{ registry_location.link }}">{{ registry_location.name }}</a>
+<center>
+	<img src="../media/{{ registry_entry.image }}" width=100px><br>
+	<a href="{{ registry_entry.url }}">{{ registry_entry.name }}</a><br>
+	{{ registry_entry.description | safe }} <br>
+</center>
 </div>
 {% endfor %}
 {% endblock %}

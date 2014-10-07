@@ -20,4 +20,5 @@ urlpatterns = patterns('',
     url(r'^welcome/', include('welcome.urls')),
     url(r'^$', include('welcome.urls')),
     url(r'^login/', include('login.urls')),
+    url(r'^fonts/', include('fonts.urls')),
 )

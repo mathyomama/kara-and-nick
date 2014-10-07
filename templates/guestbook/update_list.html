@@ -1,0 +1,24 @@
+{% extends "guestbook/base.html" %}
+
+{% block main_section %}
+<table class="table">
+	<thead>
+		<tr>
+			<th>Person</th>
+			<th>Location</th>
+			<th>Note</th>
+			<th>Update?</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for entry in user_entries %}
+		<tr>
+			<td>{{ entry.person }}</td>
+			<td>{{ entry.location }}</td>
+			<td>{{ entry.note|truncatewords:10 }}</td>
+			<td><div><a href="{{ entry.get_absolute_update_url }}">Update</a></div></td>
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>
+{% endblock main_section %}

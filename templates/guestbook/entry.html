@@ -1,5 +1,5 @@
 {% extends "guestbook/base.html" %}
-
+{#
 {% block guestbook_content %}
 <div class="row">
 	<div class="row">
@@ -17,3 +17,23 @@
 	</div>
 </div>
 {% endblock %}
+#}
+{% block main_section %}
+<div class="col-md-8">
+	<div class="row">
+		<div class="row">
+			<div class="col-xs-6 text-left">
+				<h3>{{ entry.person }}</h3>
+			</div>
+			<div class="col-xs-6 text-right">
+				<h3>{{ entry.location }}</h3>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 text-justify">
+				<p>{{ entry.note }}</p>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock main_section %}

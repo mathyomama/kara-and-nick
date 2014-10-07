@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block stylesheets %}
+<link href="{% static 'css/rsvp.css' %}" rel="stylesheet">
+{% endblock stylesheets %}
+
+{% block whole_content %}
+<div class="container whole-container">
+	<div class="col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-0 col-md-12 invitation-outer">
+		<div class="col-xs-12 invitation-inner">
+			<div id="left-side" class="hidden-xs col-md-4">
+				{% block left_side %}
+				<div id="rsvp-picture" class="col-md-12 col-lg-12">
+					<img src="{% static 'img/rsvp2.jpg' %}" width="100%">
+				</div>
+				{% endblock left_side %}
+			</div>
+			<div id="right-side" class="col-xs-12 col-md-8">
+				{% block right_side %}
+				{% endblock right_side %}
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock whole_content %}
+
+{% block javascript %}
+<script src="{% static 'js/jquery.loadTemplate-1.4.4.min.js' %}"></script>
+<script src="{% static 'js/rsvp.js' %}"></script>
+{% endblock javascript %}

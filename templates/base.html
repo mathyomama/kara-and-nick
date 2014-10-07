@@ -5,92 +5,100 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 		<title>{% block title %}{{ page_title|default:"Kara and Nick's Wedding" }}{% endblock %}</title>
 
 		<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
 		<link href="{% static 'css/bootstrap-theme.min.css' %}" rel="stylesheet">
 		<link href="{% static 'css/base.css' %}" rel="stylesheet">
+		<link href="{% static 'css/fonts.css' %}" rel="stylesheet">
+		{% block stylesheets %}
+		{% endblock stylesheets %}
+
+		{% block js_template %}
+		{% endblock js_template %}
+
+		<link rel="SHORTCUT ICON" href="../../media/seal.png">
 	</head>
 	<body>
-		<div class="envelope hidden-xs hidden-sm col-md-4"><img src="../media/envelope.png" ></div>
-		<div class="tablecloth"></div>
+		<div id="background-wrapper"></div>
+		<div class="envelope hidden-xs hidden-sm">
+			<img src="{% static 'img/envelope.png' %}" >
+		</div>
 
-		<!--The menu; couldn't think of a better way of writing this other than hard coding the values-->
-		<nav class="navbar navbar-default" role="navigation">
-			<div class="container-fluid">
-				<div class="navbar-header">
+		{% block menu %}
+		<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+			<div class="container-fluid" style="background-color:#eee;     box-shadow: 0px 5px 5px #666; ">
+				<div class="navbar-header" >
 					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu-collapse">
 						<span class="sr-only">Toggle navigation</span>
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="/welcome/">Welcome</a>
+					<a class="navbar-brand" href="/welcome/" style="margin:auto;">
+						<img src="{% static 'img/seal.png' %}" height=40px style="margin-top:-10px;">
+					</a>
 				</div>
 				<div class="collapse navbar-collapse" id="menu-collapse">
 					<ul class="nav navbar-nav">
 						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Wedding Related<span class="caret"></span></a>
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><strong>Wedding Related</strong><span class="caret"></span></a>
 							<ul class="dropdown-menu" role="menu">
-								<li><a href="/our_story/">Our Story</a></li>
-								<li><a href="/wedding_party/">Wedding Party</a></li>
-								<li><a href="/the_big_day/">The Big Day</a></li>
+								<li class="dropdown_text"><a href="/our_story/">Our Story</a></li>
+								<li class="dropdown_text"><a href="/wedding_party/">Wedding Party</a></li>
+								<li class="dropdown_text"><a href="/the_big_day/">The Big Day</a></li>
 							</ul>
 						</li>
 						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Getting Around<span class="caret"></span></a>
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><strong>Getting Around</strong><span class="caret"></span></a>
 							<ul class="dropdown-menu" role="menu">
-								<li><a href="/things_to_do/">Things to Do</a></li>
-								<li><a href="/accommodations/">Accommodations</a></li>
-								<li><a href="/contacts/">Contacts</a></li>
+								<li class="dropdown_text"><a href="/things_to_do/">Things to Do</a></li>
+								<li class="dropdown_text"><a href="/accommodations/">Accommodations</a></li>
+								<li class="dropdown_text"><a href="/contacts/">Contacts</a></li>
 							</ul>
 						</li>
 						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown">For Guests<span class="caret"></span></a>
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><strong>For Guests</strong><span class="caret"></span></a>
 							<ul class="dropdown-menu" role="menu">
-								<li><a href="/rsvp/">RSVP</a></li>
-								<li><a href="/registry/">Registry</a></li>
-								<li><a href="/gallery/">Gallery</a></li>
-								<li><a href="/guestbook/">Guestbook</a></li>
+								<li class="dropdown_text"><a href="/rsvp/">RSVP</a></li>
+								<li class="dropdown_text"><a href="/registry/">Registry</a></li>
+								<li class="dropdown_text"><a href="/gallery/">Gallery</a></li>
+								<li class="dropdown_text"><a href="/guestbook/">Guestbook</a></li>
 							</ul>
 						</li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 						{% if user.is_authenticated %}
-						<li><a href="/login/logout/">Logout</a></li>
+						<li class="username" style="vertical-align:middle;">{{ user.username }}</li>
+						<li class="logout"><a href="/login/logout/"><strong>Logout</strong></a></li>
 						{% else %}
-						<li><a href="/login/">Login</a></li>
+						<li><a href="/login/"><strong>Login</strong></a></li>
 						{% endif %}
 					</ul>
 				</div>
 			</div>
 		</nav>
+		{% endblock menu %}
 
-
-		<div class="col-xs-1 col-sm-3 col-md-4 tall"></div>
-		<div class="col-xs-10 col-sm-6 col-md-4 tall invitation-outer">
-			<div class="col-xs-12 col-sm-12 col-md-12 tall invitation-inner">
-				<div id="logo" class="col-xs-12 col-sm-12 col-md-12">
-					<hr>
-					<div class="col-xs-2 col-sm-3 col-md-3"></div>
-					<div class="col-xs-8 col-sm-6 col-md-6">
-						<center>
-							<img src="../media/seal.png" width=90%>
-							<img src="../media/flourish.png" width="96%">
-							<hr>
-						</center>
-					</div>
-					<div class="col-xs-2 col-sm-3 col-md-3"></div>
+		{% block whole_content %}
+		<div class="container whole-container">
+			<div class="col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-4 col-md-8 tall invitation-outer">
+				<div class="col-xs-12 invitation-inner">
+					{% block letter_content %}
+					{% endblock letter_content %}
 				</div>
-
-				{% block content %}
-				{% endblock %}
 			</div>
-		<div class="col-xs-1 col-sm-3 col-md-4 tall"></div>
-		<div class="col-xs-1 col-sm-3 col-md-4 tall"></div>
+		</div>
+		{% endblock whole_content %}
+
+		{% block modal %}
+		{% endblock modal %}
 
 		<script src="{% static 'js/jquery-2.1.1.min.js' %}"></script>
 		<script src="{% static 'js/bootstrap.min.js' %}"></script>
+		<script src="{% static 'js/base.js' %}"></script>
+		{% block javascript %}
+		{% endblock javascript %}
 	</body>
 </html>

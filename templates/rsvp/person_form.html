@@ -1,0 +1,107 @@
+{% extends "rsvp/base.html" %}
+
+{% block right_side %}
+{% if form %}
+<div class="col-md-12 col-lg-12">
+	<form class="form-horizontal" action="/rsvp/create/" method="post" role="form">
+		
+		{% csrf_token %}
+
+		<div class="form-group"> <!-- first name field -->
+			{% if form.first_name.errors %}
+			<div class="col-md-offset-3 col-md-9 col-lg-offset-3 col-lg-9 error-message">
+				{% for error in form.first_name.errors %}
+				<p class="text-danger">{{ error }}</p>
+				{% endfor %}
+			</div>
+			{% endif %}
+			<label class="col-md-3 col-lg-3 control-label" for="{{ form.first_name.id_for_label }}">{{ form.first_name.label }}</label>
+			<div class="col-md-5 col-lg-5">
+				<input class="form-control" id="{{ form.first_name.id_for_label }}" type="text" name="{{ form.first_name.html_name }}" maxlength="{{ form.first_name.field.max_length }}" placeholder="{{ form.first_name.label }}" value="{{ form.first_name.value|default:"" }}">
+			</div>
+		</div>
+
+		<div class="form-group"> <!-- last name field -->
+			{% if form.last_name.errors %}
+			<div class="col-md-offset-3 col-md-9 col-lg-offset-3 col-lg-9 error-message">
+				{% for error in form.last_name.errors %}
+				<p class="text-danger">{{ error }}</p>
+				{% endfor %}
+			</div>
+			{% endif %}
+			<label class="col-md-3 col-lg-3 control-label" for="{{ form.last_name.id_for_label }}">{{ form.last_name.label }}</label>
+			<div class="col-md-5 col-lg-5">
+				<input class="form-control" id="{{ form.last_name.id_for_label }}" type="text" name="{{ form.last_name.html_name }}" maxlength="{{ form.last_name.field.max_length }}" placeholder="{{ form.last_name.label }}" value="{{ form.last_name.value|default:"" }}">
+				<span class="help-text">{{ form.last_name.help_text }}</span>
+			</div>
+		</div>
+
+		<div class="form-group"> <!-- dietary concerns field -->
+			<div class="col-md-offset-3 col-md-9 col-lg-offset-3 col-lg-9">
+				<span class="help-text"><small>{{ form.dietary_concerns.help_text }}</small></span>
+			</div>
+			{% if form.dietary_concerns.errors %}
+			<div class="col-md-offset-3 col-md-9 col-lg-offset-3 col-lg-9 error-message">
+				{% for error in form.dietary_concerns.errors %}
+				<p class="text-danger">{{ error }}</p>
+				{% endfor %}
+			</div>
+			{% endif %}
+			<label class="col-md-3 col-lg-3 control-label" for="{{ form.dietary_concerns.id_for_label }}">{{ form.dietary_concerns.label }}</label>
+			<div class="col-md-9 col-lg-9">
+				<textarea class="form-control" id="{{ form.dietary_concerns.id_for_label }}" name="{{ form.dietary_concerns.html_name }}" cols={{ form.dietary_concerns.field.widget.attrs.cols }} rows={{ form.dietary_concerns.field.widget.attrs.rows }} maxlength="{{ form.dietary_concerns.field.max_length }}" placeholder="{{ form.dietary_concerns.label }}">{{ form.dietary_concerns.value|default:"" }}</textarea>
+			</div>
+		</div>
+
+		<div class="form-group"> <!-- email field -->
+			<div class="col-md-offset-3 col-md-9 col-lg-offset-3 col-lg-9">
+				<span class="help-text"><small>{{ form.email.help_text }}</small></span>
+			</div>
+			{% if form.email.errors %}
+			<div class="col-md-offset-3 col-md-9 col-lg-offset-3 col-lg-9 error-message">
+				{% for error in form.email.errors %}
+				<p class="text-danger">{{ error }}</p>
+				{% endfor %}
+			</div>
+			{% endif %}
+			<label class="col-md-3 col-lg-3 control-label" for="{{ form.email.id_for_label }}">{{ form.email.label }}</label>
+			<div class="col-md-5 col-lg-5">
+				<input class="form-control" id="{{ form.email.id_for_label }}" type="email" name="{{ form.email.html_name }}" placeholder="{{ form.email.label }}" value="{{ form.email.value|default:"" }}">
+			</div>
+		</div>
+
+		<div class="form-group"> <!-- updates field -->
+			<div class="col-md-offset-3 col-md-9 col-lg-offset-3 col-lg-9">
+				<span class="help-text"><small>{{ form.updates.help_text }}</small></span>
+			</div>
+			{% if form.updates.errors %}
+			<div class="col-md-offset-3 col-md-9 col-lg-offset-3 col-lg-9 error-message">
+				{% for error in form.updates.errors %}
+				<p class="text-danger">{{ error }}</p>
+				{% endfor %}
+			</div>
+			{% endif %}
+			<div class="col-md-offset-3 col-md-9 col-lg-offset-9 col-lg-9">
+				<div class="checkbox">
+					<label for="{{ form.updates.id_for_label }}">
+						<input id="{{ form.updates.id_for_label }}" type="checkbox" name="{{ form.updates.html_name }}">{{ form.updates.label }}
+					</label>
+				</div>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<div class="col-md-offset-3 col-md-9 col-lg-offset-3 col-lg-9">
+				<button type="submit" class="btn btn-primary">{{ status_button }}</button>
+				<a href="/rsvp/"><button type="button"  class="btn btn-danger">Cancel</button></a>
+			</div>
+		</div>
+
+	</form>
+</div>
+{% else %}
+<div class="col-md-12 col-lg-12">
+	<p>{{ not_allowed_message }}</p>
+</div>
+{% endif %}
+{% endblock right_side %}

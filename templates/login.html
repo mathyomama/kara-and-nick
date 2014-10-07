@@ -1,37 +1,47 @@
 {% extends "base.html" %}
 
-{% block content %}
-{{ coming_from }}
+{% load static %}
 
-{% if form.errors %}
-<p>Your username and password didn't match. Please try again.</p>
-{% endif %}
-<div class="container-fluid">
-	<div class="col-sm-3 col-md-4">
-		<!--left div for positioning the middle class-->
-	</div>
-	<div class="jumbotron col-xs-12 col-sm-6 col-md-4">
-		<h2>Please Sign In</h2>
-		<div class="container">
+{% block menu %}
+{% endblock menu %}
+
+{% block stylesheets %}
+<link href="{% static 'css/login.css' %}" rel="stylesheet">
+{% endblock stylesheets %}
+
+{% block whole_content %}
+<div class="container">
+	<div class="jumbotron col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4">
+		<div class="container text-center">
+			<img src="/static/img/seal.png" height="120px">
+			<hr class="fancy">
+			<hr>
+			{% if form.non_field_errors %}
+			{% for error in form.non_field_errors %}
+			<small class="text-danger">{{ error }}</small>
+			{% endfor %}
+			{% endif %}
 			<form role="role" method="post" id="login" action="/login/">
 				{% csrf_token %}
 
 				{% for field in form.visible_fields %}
 				<div class="form-group">
-					{{ field.errors }}
+					{% for error in field.errors %}
+					<small class="text-danger">{{ error }}</small>
+					<br />
+					{% endfor %}
 					{{ field.help_text }}
 					<label for="{{ field.id_for_label }}">{{ field.label }}</label>
-					<input class="form-control" type="{{ field.field.widget.input_type }}" id="{{ field.auto_id }}" name="{{ field.html_name }}" placeholder="{{ field.name }}">
+					<input class="form-control" type="{{ field.field.widget.input_type }}" maxlength="15" size="15" id="{{ field.auto_id }}" name="{{ field.html_name }}" placeholder="{{ field.name }}">
 				</div>
 				{% endfor %}
 
 				<input class="btn btn-default" type="submit" value="Sign In" />
 			</form>
+			<hr>
+			<img id="bottom-img" src="http://2.bp.blogspot.com/-__zncDPPNfg/UlNtSpuaY1I/AAAAAAAAArw/KgGyw4jIQpE/s1600/divider_big_transparent1+(1).png" width="100%">
 		</div>
-	</div>
-	<div class="col-sm-3 col-md-4">
-		<!--right div for positioning the middle class-->
 	</div>
 </div>
 
-{% endblock %}
+{% endblock whole_content %}

@@ -1,0 +1,151 @@
+{% extends "modal_base.html" %}
+
+{% load static %}
+
+{% block modal_content %}
+<div class="modal-header">
+	<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+	<h4 class="modal-title">{{ form_title }}</h4>
+</div>
+<div class="modal-body">
+	{% if form %}
+	<form id="person-form" class="form-horizontal" action="{{ request.get_full_path }}" method="post" role="form">
+
+		{% csrf_token %}
+
+		<!-- first name field -->
+		<div id="{{ form.first_name.html_name }}" class="form-group">
+			<div class="hidden-xs col-sm-offset-3 col-sm-9 col-md-offset-3 col-md-9 col-lg-offset-3 col-lg-9">
+				<span class="help-text"><small>{{ form.first_name.help_text }}</small></span>
+				<div class="error-message">
+					{% for error in form.first_name.errors %}
+					<p class="text-danger">{{ error }}</p>
+					{% endfor %}
+				</div>
+			</div>
+			<label class="col-xs-12 col-sm-3 col-md-3 col-lg-3 control-label" for="{{ form.first_name.id_for_label }}">{{ form.first_name.label }}</label>
+			<div class="col-xs-12 visible-xs-block">
+				<span class="help-text"><small>{{ form.first_name.help_text }}</small></span>
+				<div class="error-message">
+					{% for error in form.first_name.errors %}
+					<p class="text-danger">{{ error }}</p>
+					{% endfor %}
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-5 col-md-5 col-lg-5">
+				<input class="form-control" id="{{ form.first_name.id_for_label }}" type="text" name="{{ form.first_name.html_name }}" maxlength="{{ form.first_name.field.max_length }}" placeholder="{{ form.first_name.label }}" value="{{ form.first_name.value|default:"" }}">
+			</div>
+		</div>
+		<!-- end first_name field -->
+		
+		<!-- last name field -->
+		<div id="{{ form.last_name.html_name }}"class="form-group">
+			<div class="hidden-xs col-sm-offset-3 col-sm-9 col-md-offset-3 col-md-9 col-lg-offset-3 col-lg-9">
+				<span class="help-text"><small>{{ form.last_name.help_text }}</small></span>
+				<div class="error-message">
+					{% for error in form.last_name.errors %}
+					<p class="text-danger">{{ error }}</p>
+					{% endfor %}
+				</div>
+			</div>
+			<label class="col-sm-3 col-md-3 col-lg-3 control-label" for="{{ form.last_name.id_for_label }}">{{ form.last_name.label }}</label>
+			<div class="col-xs-12 visible-xs-block">
+				<span class="help-text"><small>{{ form.last_name.help_text }}</small></span>
+				<div class="error-message">
+					{% for error in form.last_name.errors %}
+					<p class="text-danger">{{ error }}</p>
+					{% endfor %}
+				</div>
+			</div>
+			<div class="col-sm-5 col-md-5 col-lg-5">
+				<input class="form-control" id="{{ form.last_name.id_for_label }}" type="text" name="{{ form.last_name.html_name }}" maxlength="{{ form.last_name.field.max_length }}" placeholder="{{ form.last_name.label }}" value="{{ form.last_name.value|default:"" }}">
+				<span class="help-text">{{ form.last_name.help_text }}</span>
+			</div>
+		</div>
+		<!-- end last_name field -->
+
+		<!-- dietary_concerns field -->
+		<div id="{{ form.dietary_concerns.html_name }}" class="form-group">
+			<div class="hidden-xs col-sm-offset-3 col-sm-9 col-md-offset-3 col-md-9 col-lg-offset-3 col-lg-9">
+				<span class="help-text"><small>{{ form.dietary_concerns.help_text }}</small></span>
+				<div class="error-message">
+					{% for error in form.dietary_concerns.errors %}
+					<p class="text-danger">{{ error }}</p>
+					{% endfor %}
+				</div>
+			</div>
+			<label class="col-sm-3 col-md-3 col-lg-3 control-label" for="{{ form.dietary_concerns.id_for_label }}">{{ form.dietary_concerns.label }}</label>
+			<div class="col-xs-12 visible-xs-block">
+				<span class="help-text"><small>{{ form.dietary_concerns.help_text }}</small></span>
+				<div class="error-message">
+					{% for error in form.dietary_concerns.errors %}
+					<p class="text-danger">{{ error }}</p>
+					{% endfor %}
+				</div>
+			</div>
+			<div class="col-sm-9 col-md-9 col-lg-9">
+				<textarea class="form-control" id="{{ form.dietary_concerns.id_for_label }}" name="{{ form.dietary_concerns.html_name }}" cols={{ form.dietary_concerns.field.widget.attrs.cols }} rows={{ form.dietary_concerns.field.widget.attrs.rows }} maxlength="{{ form.dietary_concerns.field.max_length }}" placeholder="{{ form.dietary_concerns.label }}">{{ form.dietary_concerns.value|default:"" }}</textarea>
+			</div>
+		</div>
+		<!-- end dietary_concerns field -->
+
+		<!-- email field -->
+		<div id="{{ form.email.html_name }}" class="form-group">
+			<div class="hidden-xs col-sm-offset-3 col-sm-9 col-md-offset-3 col-md-9 col-lg-offset-3 col-lg-9">
+				<span class="help-text"><small>{{ form.email.help_text }}</small></span>
+				<div class="error-message">
+					{% for error in form.email.errors %}
+					<p class="text-danger">{{ error }}</p>
+					{% endfor %}
+				</div>
+			</div>
+			<label class="col-sm-3 col-md-3 col-lg-3 control-label" for="{{ form.email.id_for_label }}">{{ form.email.label }}</label>
+			<div class="col-xs-12 visible-xs-block">
+				<span class="help-text"><small>{{ form.email.help_text }}</small></span>
+				<div class="error-message">
+					{% for error in form.email.errors %}
+					<p class="text-danger">{{ error }}</p>
+					{% endfor %}
+				</div>
+			</div>
+			<div class="col-sm-5 col-md-5 col-lg-5">
+				<input class="form-control" id="{{ form.email.id_for_label }}" type="email" name="{{ form.email.html_name }}" placeholder="{{ form.email.label }}" value="{{ form.email.value|default:"" }}">
+			</div>
+		</div>
+		<!-- end email field -->
+
+		<!-- updates field -->
+		<div id="{{ form.updates.html_name }}" class="form-group">
+			<div class="col-xs-12 col-sm-offset-3 col-sm-9 col-md-offset-3 col-md-9 col-lg-offset-3 col-lg-9">
+				<span class="help-text"><small>{{ form.updates.help_text }}</small></span>
+				<div class="error-message">
+					{% for error in form.updates.errors %}
+					<p class="text-danger">{{ error }}</p>
+					{% endfor %}
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-offset-3 col-sm-3 col-md-offset-3 col-md-9 col-lg-offset-3 col-lg-9">
+				<div class="checkbox">
+					<label for="{{ form.updates.id_for_label }}">
+						<input id="{{ form.updates.id_for_label }}" type="checkbox" name="{{ form.updates.html_name }}">{{ form.updates.label }}
+					</label>
+				</div>
+			</div>
+		</div>
+		<!-- end updates field -->
+
+		<div class="form-group">
+			<div class="col-sm-offset-3 col-sm-9 col-md-offset-3 col-md-9 col-lg-offset-3 col-lg-9">
+				<button type="submit" class="btn btn-primary">{{ status_button }}</button>
+				<button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+			</div>
+		</div>
+	</form>
+	{% else %}
+	<p>{{ not_allowed_message }}</p>
+	<button type="button" class="btn btn-danger" data-dismiss="modal">Dismiss</button>
+	{% endif %}
+</div> <!-- end modal-body -->
+<div class="modal-footer">
+</div>
+{% endblock modal_content %}

@@ -1,20 +1,56 @@
 {% extends "base.html" %}
 
-{% block content %}
+{% block letter_content %}
 <div class="col-md-12">
 	<center>
 		<div class="pagetitle">
+	<br>
 			Our Story
+			<hr class="fancy" width=75%>
 		</div>
 	</center>
 	<br>
-	{% for video_clip in video_clips %}
-	<a href="../media/{{ video_clip.path }}">{{ video_clip.title }}</a> |
-	{% endfor %}
+	<script>
+	function toggle_visibility(id) {
+		var videos = document.getElementsByClassName("video-div");
+		for(var i = 0; i < videos.length; i++)
+		{
+			videos[i].style.visibility="hidden";
+			videos[i].style.display="none";
+		}
+		visible_video = document.getElementById(id);
+		visible_video.style.visibility="visible";
+		visible_video.style.display="block";
+	}	
+	</script>
+	<div class="col-md-3">
+	{% for video_clip in our_story_entries %}
+	<div class="our_story_link_text">
+	<a href="#" onclick="toggle_visibility('video_{{ forloop.counter }}');">{{ video_clip.question }}</a>
+</div>
 	<br>
-	<div width=100%>
-		<div style="position: absolute;"></div>
-		<iframe width="100%" height="699px" style="position:absolute; z-index:-2;"src="//www.youtube.com/embed/qUJYqhKZrwA?autoplay=0&showinfo=0&controls=0" frameborder="0" allowfullscreen></iframe>
+	{% endfor %}
+</div>
+<div class="col-md-9">
+	{% for video_clip in our_story_entries %}
+	<div class="video-div" height=100% id='video_{{ forloop.counter }}'>
+		<div class="video_clip_question_title_text">
+			<center>
+		{{ video_clip.question}}
+	</center>
 	</div>
+	<br>
+		<center>
+		<video  height=100% style="height:299; width:252; -webkit-mask-box-image: url(http://3-dreams-of-black.googlecode.com/git/archive/_s/heart.svg)" autoplay>
+			<source  height=100% src="movie.mp4" type="video/mp4">
+		</video>
+	</center>
+	</div>	
+	{% endfor %}
+</div>
+	<!--
+		<hr>
+			<iframe width="100%" style="position:absolute; z-index:-2;"src="//www.youtube.com/embed/QZmZFeZxEKI?autoplay=0&showinfo=0&controls=0" frameborder="0" allowfullscreen></iframe>
+	-->
 </div>
 {% endblock %}

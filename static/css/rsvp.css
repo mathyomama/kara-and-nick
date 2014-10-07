@@ -1,0 +1,36 @@
+#instructions {
+	margin: 10px 0;
+}
+
+#add-button-row {
+	margin: 10px 0;
+}
+
+.person-data {
+	margin: 20px 0;
+	padding: 10px 0;
+	border: inset black;
+}
+
+#rsvp-picture {
+	margin: 20px 0;
+}
+
+#rsvp-picture img {
+	//border-radius: 45%/30%;
+}
+
+p.error {
+	margin: 0;
+}
+
+@media (max-width: 767px) {
+	#rsvp-main-section {
+		padding: 0px;
+	}
+
+	.person-data {
+		border: 0;
+		margin: 0;
+	}
+}
