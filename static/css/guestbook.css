@@ -1,0 +1,119 @@
+.intro {
+	margin-bottom: 5px;
+}
+
+.post {
+	margin: 5px auto;
+	max-width: 280px;
+	border: 1px solid black;
+	border-radius: 4px;
+	font-size: 2em;
+}
+
+a .post {
+	color:#111111;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+.guestbook {
+	background-color: #cccccc;
+}
+
+.guestbook:hover {
+	background-color: #bbbbbb;
+}
+
+.create {
+	background-color: #6DB476;
+}
+
+.create:hover {
+	background-color: #43814B;
+}
+
+.edit {
+	background-color: #D43737;
+}
+
+.edit:hover {
+	background-color: #C02929;
+}
+
+.update{
+	color: #0047FF;
+}
+
+.update:hover {
+	color: #000AFF;
+}
+
+.delete {
+	color: #990000;
+}
+
+.delete:hover {
+	color: #CA0000;
+}
+
+span.top-line {
+	font-size: 1.8vw;
+}
+
+@media (max-width: 991px) and (min-width: 768px) {
+	.post {
+		margin-bottom: 20px;
+	}
+
+	span.top-line {
+		font-weight: bold;
+	}
+}
+
+@media (max-width: 768px) {
+	span.top-line {
+		font-size: 1em;
+		font-weight: bold;
+	}
+}
+
+@media (min-width: 992px) {
+	#left-side {
+		margin-top: 20px;
+		padding: 0px;
+	}
+
+	#side-menu {
+		padding-right: 30px;
+	}
+
+	#side-menu p {
+		margin-top: 20px;
+	}
+
+	.clickable {
+		padding: 4px;
+		border: 2px solid transparent;
+		border-radius: 2px;
+		cursor: pointer;
+	}
+
+	.clickable:hover {
+		border: 2px solid #999999;
+		background-color: #e3e3e3;
+	}
+
+	.fixed {
+		position: fixed;
+		border-width: 0 2px 0 0;
+		border-style: solid;
+		-webkit-border-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,0)), to(rgba(0,0,0,0)), color-stop(.5, rgba(0,0,0,1))) 1 100%;
+		-webkit-border-image: -webkit-linear-gradient(bottom, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0)) 1 100%;
+		-moz-border-image: -moz-linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0)) 1 100%;
+		-ms-border-image: -ms-linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0)) 1 100%;
+		-o-border-image: -o-linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0)) 1;
+		border-image: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,1), rgba(0,0,0,0)) 1;
+	}
+}

@@ -1,0 +1,49 @@
+{% extends "guestbook/base.html" %}
+
+{% block right_side %}
+<div class="container-fluid">
+	{% if form %}
+	<form id="guestbook-form" class="form-horizontal" role="role" method="post" action="{{ request.get_full_path }}">
+		{% csrf_token %}
+
+		{% for field in form.visible_fields %}
+		<div id="{{ field.html_name }}"class="form-group">
+			<div class="hidden-xs col-sm-offset-3 col-sm-9">
+				<span class="help-text"><small>{{ field.help_text }}</small></span>
+				<div class="error-message">
+					{% for error in field.errors %}
+					<p class="text-danger">{{ error }}</p>
+					{% endfor %}
+				</div>
+			</div>
+			<label class="col-sm-3 control-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+			<div class="col-xs-12 visible-xs-block">
+				<span class="help-text"><small>{{ field.help_text }}</small></span>
+				<div class="error-message">
+					{% for error in field.errors %}
+					<p class="text-danger">{{ error }}</p>
+					{% endfor %}
+				</div>
+			</div>
+			{% if field.name == 'note' %}
+			<div class="col-sm-9">
+				<textarea class="form-control" id="{{ field.id_for_label }}" name="{{ field.html_name }}" cols={{ field.field.widget.attrs.cols }} rows={{ field.field.widget.attrs.rows }} maxlength="{{ field.field.max_length }}" placeholder="{{ field.name }}">{{ field.value|default:"" }}</textarea>
+			</div>
+			{% else %}
+			<div class="col-sm-5">
+				<input class="form-control" id="{{ field.id_for_label }}" type="text" name="{{ field.html_name }}" maxlength="{{ field.field.max_length }}" placeholder="{{ field.name }}" value="{{ field.value|default:"" }}">
+				<span class="help-text">{{ field.help_text }}</span>
+			</div>
+			{% endif %}
+		</div>
+		{% endfor %}
+		<div class="col-sm-offset-3 col-sm-9">
+			<button type="submit" class="btn btn-primary">submit</button>
+		</div>
+	</form>
+	{% else %}
+	<p>{{ not_allowed_message }}</p>
+	<button type="button" class="btn btn-danger" data-dismiss="modal">Dismiss</button>
+	{% endif %}
+</div>
+{% endblock right_side %}

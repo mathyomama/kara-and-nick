@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db.models import signals
 from django.core.urlresolvers import reverse
+from guestbook.models import removeBadChar
 from .signals import create_user_groups, put_account_into_guest
 import sys
 
@@ -22,7 +23,7 @@ class Person(models.Model):
     updates = models.BooleanField(default=False)
 
     def get_html_id(self):
-        return "%s-%s-%s" % (self.first_name, self.last_name, self.pk)
+        return "%s-%s-%s" % (removeBadChar(self.first_name), removeBadChar(self.last_name), self.pk)
 
     def get_absolute_update_url(self):
         return reverse(

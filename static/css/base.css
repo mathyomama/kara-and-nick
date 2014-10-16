@@ -24,7 +24,6 @@ div.pagetitle {
 div.frame_scrapbook {
 	position: relative;
 	margin: 0 auto;
-	float: left;
 }
 
 div.frame_scrapbook img {
@@ -226,44 +225,6 @@ hr.flourish
 	background: url('../../media/flourish.png') no-repeat 50% 50%;
 	margin: 3em 0;
 	border: 0;
-}
-
-#side-menu {
-	background-color: #eeeeee;
-	box-shadow: 0px 5px 14px #777777;
-	min-height:100%;
-	z-index: 1;
-}
-
-#side-menu div.inner {
-	margin-top:15px;	
-	margin-bottom:15px;	
-	min-width:100%;
-	background-color: #eeeeee;
-	border-style: solid;
-	border-width: 1.5px;
-	border-color: #666666;
-	min-height:100%;
-	z-index: 1;
-}
-
-#main-section {
-	background-color: #eeeeee;
-	box-shadow: 0px 5px 14px #777777;
-	min-height:100%;
-	z-index: 1;
-}
-
-#main-section div.inner {
-	margin-top:15px;	
-	margin-bottom:15px;	
-	min-width:100%;
-	background-color: #eeeeee;
-	border-style: solid;
-	border-width: 1.5px;
-	border-color: #666666;
-	min-height:100%;
-	z-index: 1;
 }
 
 @media (max-width: 767px) {

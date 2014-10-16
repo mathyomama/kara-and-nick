@@ -1,5 +1,13 @@
 function resize_invitation() {
 	var $inner = $('.invitation-inner');
+	// 70 pixels for the navbar height and bottom-margin and 20 for whole-container bottom-padding
+	$('.invitation-outer').css('min-height', String($(window).height() - 70 - 20) + 'px');
+	$inner.css('height', 'auto');
+	$inner.css('height', String($('.invitation-outer').height() - 30) + 'px');
+}
+
+function old_resize_invitation() {
+	var $inner = $('.invitation-inner');
 	console.log("BEFORE MIN-HEIGHT");
 	print_height();
 	// 70 pixels for the navbar height and bottom-margin and 20 for whole-container bottom-padding
@@ -15,10 +23,12 @@ function resize_invitation() {
 }
 
 $(document).ready(function() {
-	resize_invitation();
-
 	$(window).resize(resize_invitation);
 });
+
+window.onload = function() {
+	resize_invitation();
+}
 
 function print_height() {
 	console.log("$(window).height() : " + $(window).height() + "\n",

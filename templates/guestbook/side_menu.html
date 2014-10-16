@@ -1,0 +1,30 @@
+{% load static %}
+
+<div id="side-menu" class="col-md-12">
+	{% block side_menu %}
+	<p class="intro text-justify">
+		{{ side_menu }}
+	</p>
+	<div class="col-sm-6 col-md-12">
+		<a href="/guestbook/">
+			<div class="post guestbook text-center">
+				Guestbook
+			</div>
+		</a>
+	</div>
+	<div class="col-sm-6 col-md-12">
+		<a class="modal-button" href="/guestbook/create/" data-toggle="modal" data-target="#form-modal">
+			<div class="post create text-center">
+				Create Post
+			</div>
+		</a>
+	</div>
+	<div class="col-sm-6 col-md-12">
+		<a href="/guestbook/{{ user.username }}/edit/">
+			<div class="post edit text-center">
+				Edit Post
+			</div>
+		</a>
+	</div>
+	{% endblock side_menu %}
+</div>

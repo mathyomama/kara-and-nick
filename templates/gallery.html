@@ -1,11 +1,11 @@
 {% extends "base.html" %}
 
 {% block letter_content %}
-<center>
+<div class="text-center">
 	<div class="pagetitle">
 		<br>
 		Gallery
-<hr class="fancy" width=75%>
+		<hr class="fancy" width=75%>
 	</div>
 	{% for pic_url, pic_caption in pic_list%}
 	<hr>
@@ -17,9 +17,9 @@
 		<div class="lower_right"></div>
 	</div>
 	<div class="pic_caption_text">
-	{{ pic_caption }} 
-</div>
+		{{ pic_caption }}
+	</div>
 	<hr>
 {% endfor %}
-</center>
+</div>
 {% endblock letter_content %}

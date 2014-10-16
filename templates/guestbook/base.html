@@ -1,64 +1,52 @@
 {% extends "base.html" %}
 
+{% load static %}
+
+{% block stylesheets %}
+<link href="{% static 'css/guestbook.css' %}" rel="stylesheet">
+{% endblock stylesheets %}
+
 {% block whole_content %}
 <div class="container whole-container">
 	<div class="col-xs-12 invitation-outer">
 		<div class="col-xs-12 invitation-inner">
 			<div id="left-side" class="col-md-4">
 				{% block left_side %}
+				<div class="hidden-xs hidden-sm">
+					{% include 'guestbook/side_menu.html' %}
+				</div>
 				{% endblock left_side %}
 			</div>
 			<div id="right-side" class="col-md-8">
+				{% block heading %}
+				<div class="text-center">
+					<h1>Guestbook</h1>
+				</div>
+				<hr class="fancy">
+				{% endblock heading %}
+
+				<div class="hidden-md hidden-lg">
+					{% include 'guestbook/side_menu.html' %}
+				</div>
+
 				{% block right_side %}
 				{% endblock right_side %}
 			</div>
 		</div>
 	</div>
-	{% comment fluff %}
-	<div id="top" class="row">
-		{% block top_title %}
-		<div id="title" class="col-md-offset-5 col-md-3 invitation-outer">
-			<div class="col-md-12 invitation-inner text-center">
-				<h1>Guestbook</h1>
-			</div>
-		</div>
-		{% endblock top_title %}
-	</div>
-	<br>
-	<div id="bottom" class="row">
-		{% block left_side %}
-		<div class="col-md-4">
-			<div id="side-menu"	class="col-md-12">
-				<div class="inner col-md-12">
-					{% block side_menu %}
-					<p>
-						This is the intro to the guestbook page. To create a post click "create post." To update a post click "update post." To delete a post click "delete post." I am trying to fill space with this intro so don't judge. I like to eat eat eat apples and bananas; I like to eat eat eat apples and bananas. This will probably require another model to be added so that we can change this on the admin site easily.
-					</p>
-					<div class="post text-center" style="background-color: #AEC6CF">
-						<a href="/guestbook/create/"><h2>Create Post</h2></a>
-					</div>
-					<div class="post text-center" style="background-color: #FFB347">
-						<a href="/guestbook/{{ user.username }}/update/"><h2>Update Post</h2></a>
-					</div>
-					<div class="post text-center" style="background-color: #FF7878">
-						<a href="/guestbook/{{ user.username }}/delete/"><h2>Delete Post</h2></a>
-					</div>
-					{% endblock side_menu %}
-				</div>
-			</div>
-		</div>
-		{% endblock left_side %}
-
-		{% block right_side %}
-		<div class="col-md-8">
-			<div id="main-section" class="col-md-12">
-				<div class="inner col-md-12">
-					{% block main_section %}
-					{% endblock main_section %}
-				</div>
-			</div>
-		</div>
-		{% endblock right_side %}
-	</div>
-	{% endcomment %}
+</div>
 {% endblock whole_content %}
+
+{% block modal %}
+<div class="modal fade" id="form-modal" tabindex="-1" role="dialog" aria-labelledby="modal-title" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+		</div>
+	</div>
+</div>
+{% endblock modal %}
+
+{% block javascript %}
+<script src="{% static 'js/jquery.loadTemplate-1.4.4.min.js' %}"></script>
+<script src="{% static 'js/guestbook.js' %}"></script>
+{% endblock javascript %}

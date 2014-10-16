@@ -1,27 +1,26 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
+import re
 
 # Create your models here.
 class GuestbookEntry(models.Model):
-    created_by = models.ForeignKey(User, null=True)
-    #name = models.CharField(max_length=50)
-    person = models.OneToOneField('rsvp.Person', unique=True, null=True)
+    created_by = models.ForeignKey(User)
+    name = models.CharField(max_length=50)
     location = models.CharField(max_length=100)
     note = models.TextField()
     date = models.DateField(auto_now_add=True)
 
     def __unicode__(self):
-        return "%s" % self.person
+        return "%s" % self.name
     
     def get_absolute_url(self):
         """
-        Should return a url that looks like /guestbook/<created_by>/<pk>/
+        Should return a url that looks like /guestbook/entry/<pk>/
         """
         return reverse('guestbook-detail',
                 kwargs={
                     'pk': self.pk,
-                    'created_by': self.created_by,
                     }
                 )
 
@@ -47,3 +46,8 @@ class GuestbookEntry(models.Model):
                     'created_by': self.created_by,
                     }
                 )
+    def get_html_id(self):
+        return "%s-%s" % (removeBadChar(self.name), self.pk)
+
+def removeBadChar(string):
+    return re.sub(r'\W', '', string)

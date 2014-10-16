@@ -13,6 +13,10 @@ from .forms import PersonForm
 from .models import Account, Person, Image
 
 class InitialView(TemplateView):
+    """
+    This is the first view the user will see when the go the rsvp page. Most of the content will be modified
+    through AJAX, so the user will most likely be staying on this page.
+    """
     template_name = 'rsvp/initial.html'
     instructions = "Please RSVP below. Click the &quotAdd Person&quot button to add a reservation. You may edit or delete a reservation, as well. In the reservation form please provide a <em>first name</em> and <em>last name</em>. You may optionally provide allergy infromation and your email for updates. This infromation won't be viewable by the public."
 
@@ -45,6 +49,10 @@ class InitialView(TemplateView):
         return super(InitialView, self).dispatch(*args, **kwargs)
 
 class AjaxableResponseMixin(object):
+    """
+    This is for handling AJAX requests and sending out the proper information on success or fail. This will
+    be used by the create, update, and delete views.
+    """
 
     def form_invalid(self, form):
         response = super(AjaxableResponseMixin, self).form_invalid(form)
@@ -59,7 +67,6 @@ class AjaxableResponseMixin(object):
             old_id = Person.objects.get(pk=self.kwargs[self.pk_url_kwarg]).get_html_id()
         response = super(AjaxableResponseMixin, self).form_valid(form)
         if self.request.is_ajax():
-            #self.person = Person.objects.get(pk=self.object.pk)
             p = self.object
             data = {
                     'first-name': p.first_name,
@@ -76,8 +83,29 @@ class AjaxableResponseMixin(object):
             return JsonResponse(data)
         else:
             return response
+    
+    def delete(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        old_id = self.object.get_html_id()
+        success_url = self.get_success_url()
+        self.object.delete()
+        if request.is_ajax():
+            data = {
+                    'status': self.status,
+                    'old_id': old_id,
+                    }
+            return JsonResponse(data)
+        else:
+            return HttpResponseRedirect(success_url)
 
 class PersonFormMixin(object):
+    """
+    This helps with grabbing the right information for the form. Since the create and update forms are very
+    similar, they will be using a lot of the same information. For each form view, the account of the person
+    need to be pulled up in order to check the number of reservations and other queries. This information
+    may change from request to request, which could be AJAX, so the account needs to be re-queried from the
+    database.
+    """
     form_class = PersonForm
     model = Person
     fields = [
@@ -87,7 +115,8 @@ class PersonFormMixin(object):
             'email',
             'updates',
             ]
-    template_name = 'rsvp/person_form_modal.html'
+    template_name = 'rsvp/person_form.html'
+    modal_template_name = 'rsvp/person_form_modal.html'
     status = None
     status_button = "button"
     form_title = "Reservation Form"
@@ -106,13 +135,37 @@ class PersonFormMixin(object):
         kw_args = super(PersonFormMixin, self).get_form_kwargs(*args, **kwargs)
         kw_args['account'] = self.account
         return kw_args
+
+    def get_template_names(self):
+        template_name = super(PersonFormMixin, self).get_template_names()
+        if self.request.is_ajax():
+            return [self.modal_template_name]
+        else:
+            return template_name
     
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
         self.account = get_object_or_404(Account, user=self.request.user)
         return super(PersonFormMixin, self).dispatch(*args, **kwargs)
 
+class ModifyMixin(object):
+    """
+    This is for any view which will modify the database, so the update and delete views. It adds a check for
+    the user so that user can't modify other's information.
+    """
+
+    def get(self, request, *args, **kwargs):
+        response = super(ModifyMixin, self).get(request, *args, **kwargs)
+        return response
+        if self.object.created_by == request.user:
+            return response
+        else:
+            return not_allowed(request)
+
 class PersonCreate(AjaxableResponseMixin, PersonFormMixin, CreateView):
+    """
+    The create form view
+    """
     status = 'create'
     status_button = "Add Person"
     form_title = "Add a Reservation"
@@ -135,7 +188,10 @@ class PersonCreate(AjaxableResponseMixin, PersonFormMixin, CreateView):
         context_dict = self.get_context_data(form=form)
         return self.render_to_response(context_dict)
 
-class PersonUpdate(AjaxableResponseMixin, PersonFormMixin, UpdateView):
+class PersonUpdate(ModifyMixin, AjaxableResponseMixin, PersonFormMixin, UpdateView):
+    """
+    The update form view
+    """
     status = "update"
     status_button = "Update"
     form_title = "Update a Reservation"
@@ -153,7 +209,10 @@ class PersonUpdate(AjaxableResponseMixin, PersonFormMixin, UpdateView):
                 }
         return initial
 
-class PersonDelete(AjaxableResponseMixin, DeleteView):
+class PersonDelete(ModifyMixin, AjaxableResponseMixin, DeleteView):
+    """
+    The delete form view
+    """
     model = Person
     template_name = "rsvp/person_confirm_delete_modal.html"
     success_url = reverse_lazy('rsvp-initial')
@@ -167,20 +226,20 @@ class PersonDelete(AjaxableResponseMixin, DeleteView):
         kw_args['form_message'] = _(self.form_message)
         return kw_args
 
-    def delete(self, request, *args, **kwargs):
-        self.object = self.get_object()
-        old_id = self.object.get_html_id()
-        success_url = self.get_success_url()
-        self.object.delete()
-        if request.is_ajax():
-            data = {
-                    'status': self.status,
-                    'old_id': old_id,
-                    }
-            return JsonResponse(data)
-        else:
-            return HttpResponseRedirect(success_url)
-    
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
         return super(PersonDelete, self).dispatch(*args, **kwargs)
+
+def not_allowed(request):
+    """
+    The method for 'not allowed' message. Use this to show the user he or she is not allowed to do whatever
+    action he or she was about to perform. This will redirect to a page with the following message.
+    """
+    data = {
+            "status": "not_allowed",
+            "form_message": "You are not allowed to edit or delete this reservation.",
+            }
+    if request.is_ajax():
+        return JsonResponse(data)
+    else:
+        return render(request, "rsvp/not_allowed.html", data)

@@ -11,6 +11,34 @@
 	<form id="person-form" action="{{ person.get_absolute_delete_url }}" method="post">
 		{% csrf_token %}
 		<h2>{{ form_message }}</h2>
+		<hr>
+		<div class="row first-name">
+			<label class="col-sm-3 col-md-3 text-right">First Name</label>
+			<p class="col-sm-9 col-md-9">{{ person.first_name }}</p>
+		</div>
+		<div class="row last-name">
+			<label class="col-sm-3 col-md-3 text-right">Last Name</label>
+			<p class="col-sm-9 col-md-9">{{ person.last_name }}</p>
+		</div>
+		<div class="row dietary-concerns" data-field="dietary-concerns">
+			<label class="col-sm-3 col-md-3 text-right">Dietary Concerns</label>
+			<p class="col-sm-9 col-md-9">{{ person.dietary_concerns }}</p>
+		</div>
+		<div class="row email">
+			<label class="col-sm-3 col-md-3 text-right">Email</label>
+			<p class="col-sm-9 col-md-9">{{ person.email }}</p>
+		</div>
+		<div class="row updates">
+			<label class="col-sm-3 col-md-3 text-right">Updates</label>
+			<p class="col-sm-9 col-md-9">
+				{% if person.updates %}
+				yes
+				{% else %}
+				no
+				{% endif %}
+			</p>
+		</div>
+		<hr>
 		<button id="submit" class="btn btn-danger" type="submit">yes</button>
 		<button class="btn btn-default" type="button" data-dismiss="modal">cancel</button>
 	</form>

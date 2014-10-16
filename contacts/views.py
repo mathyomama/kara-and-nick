@@ -8,6 +8,6 @@ def index(request):
     context = RequestContext(request)
     context_dict = dict()
 
-    context_dict['contacts'] = Contact.objects.all()
+    context_dict['contacts'] = Contact.objects.order_by('email')
 
     return render_to_response('contacts.html', context_dict, context)
