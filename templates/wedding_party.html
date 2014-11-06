@@ -4,7 +4,6 @@
 <div style="min-height:100%; height:100%;">
 <center>
 	<div class="pagetitle">
-		<br>
 		Wedding Party
 		<hr class="fancy" width=75%>
 	</div>
@@ -20,63 +19,53 @@ function toggle_visibility(id) {
 	visible_responsibility = document.getElementById(id);
 	visible_responsibility.style.visibility="visible";
 	visible_responsibility.style.display="block";
+	resize_invitation();
 }	
 </script>
-<div >
-|&nbsp;
-{% for enum, responsibility in responsibilities %}
-<div class="responsibility_link_text" style="display:inline;">
-<b><a  href="#" onclick="toggle_visibility('responsibility_{{ forloop.counter }}');">{{ responsibility }}</a></b>&nbsp;|&nbsp;
-{% if forloop.counter|divisibleby:3 %}
-<br>
-{% endif %}
-</div>
-{% endfor %}
-</div>
-{% for enum, responsibility in responsibilities %}
-<div class="responsibility-div" id="responsibility_{{ forloop.counter }}">
-	<div>
-		<center>
-			<div class="responsibility_title_text">
-			<b>{{ responsibility }}</b>
+<center>
+</center>
+{% for grouping in party_member_label_groupings %}
+	<div class="responsibility-group-div col-md-12">
+	{% for responsibility in grouping %}
+		<div class="col-md-{{responsibility.2}}">
+			<hr>
+			<div class="responsibility_title_text text-center col-md-12">
+			{{ responsibility.1 |safe}}<br>
+			<hr class="fancy">
+			</div>
+			<hr>
+			<div class="col-md-12">
+				{% for pm in party_members %}
+					{% if pm.responsibility == responsibility.0 %}
+					<div class="col-md-{{ responsibility.3 }} col-sm-{{ responsibility.4}} col-xs-{{ responsibility.4}}">
+							<center>
+							<img class="img-circle party_member_image" src="../../media/{{ pm.image }}"><br>
+							</center>
+							<center>
+								<div class="text-center party_member_name_text">
+									{{ pm.name | safe}}
+									<br>
+								</div>
+								<div class="text-center party_member_relation_text">
+									{{ pm.relation_to_engaged }}
+									<br>
+								</div>
+								<div class="text-center party_member_story_text">
+								<!--
+									{{ pm.story }} 
+								-->
+									<br>
+									<br>
+								</div>
+							</center>
+						</div>
+					{% endif %}
+				{% endfor %}
+			</div>
 		</div>
-		</center>
-		<br>
-	</div>
-	<div style="margin: 0 auto;">
-		<center>
-	{% for pm in party_members %}
-		
-		{% if pm.responsibility == enum %}
-		<div style="float: left;">
-			<div class="party_member_name_text">
-			<b>{{ pm.name }}</b><br>
-		</div>
-			<div class="party_member_relation_text">
-			{{ pm.relation_to_engaged }} <br>
-		</div>
-			<img class="img-circle" width=50% src="../media/{{ pm.image }}"><br>
-			<div class="party_member_story_text">
-			{{ pm.story }} 
-		</div>
-		</div>
-		{% endif %}
 	{% endfor %}
-		</center>
 	</div>
-</div>
 {% endfor %}
-<script>
-document.body.onload=function()
-{
-	var responsibilities = document.getElementsByClassName("responsibility-div");
-	for(var i = 0; i < responsibilities.length; i++)
-	{
-		responsibilities[i].style.visibility="hidden";
-		responsibilities[i].style.display="none";
-	}
-}
-</script>
 {% endblock %}
 
 

@@ -62,10 +62,12 @@ class AjaxableResponseMixin(object):
             return response
 
     def form_valid(self, form):
-        old_id = None
+        old_id, last = None, None
         if self.status == 'update':
             old_id = Person.objects.get(pk=self.kwargs[self.pk_url_kwarg]).get_html_id()
         response = super(AjaxableResponseMixin, self).form_valid(form)
+        if self.status == 'create':
+            last = Person.objects.filter(account=self.object.account).count()
         if self.request.is_ajax():
             p = self.object
             data = {
@@ -79,6 +81,7 @@ class AjaxableResponseMixin(object):
                     'delete_url': p.get_absolute_delete_url(),
                     'status': self.status,
                     'old_id': old_id,
+                    'last': last,
                     }
             return JsonResponse(data)
         else:
@@ -157,7 +160,7 @@ class ModifyMixin(object):
     def get(self, request, *args, **kwargs):
         response = super(ModifyMixin, self).get(request, *args, **kwargs)
         return response
-        if self.object.created_by == request.user:
+        if self.object.account == Account.objects.get(user=request.user):
             return response
         else:
             return not_allowed(request)

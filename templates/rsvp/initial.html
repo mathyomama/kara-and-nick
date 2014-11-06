@@ -4,51 +4,83 @@
 {% block right_side %}
 <!-- some kind of description of the process of filling out the form -->
 <div id="rsvp-main-section" class="col-md-12 col-lg-12">
-	<div id="title" class="text-center">
-		<h1>RSVP</h1>
+	<div id="title" class="pagetitle text-center">
+		Reservations
 	</div>
 	<hr class="fancy">
-	<div id="instructions" class="text-justify">
-		<p>{{ instructions|safe }}</p>
-	</div>
-	<div id="add-button-row" class="text-right">
-		<a data-toggle="modal" data-target="#form-modal" href="/rsvp/create/"><button id="add-button" class="btn btn-primary">Add Person</button></a>
+	<div class="visible-xs-block visible-sm-block">
+		<div id="instructions" class="text-justify">
+			<p>{{ instructions|safe }}</p>
+		</div>
+		<div id="add-button-row" class="text-center">
+			<a data-toggle="modal" data-target="#form-modal" href="/rsvp/create/">
+				<button id="add-button" class="btn wedding_button">
+					<span class="glyphicon glyphicon-plus"></span>&nbsp;
+					Add Reservation
+				</button>
+			</a>
+		</div>
 	</div>
 	<div id="submissions">
 		{% for person in people %}
-		<div id={{ person.get_html_id }} class="row person-data">
+		<div id={{ person.get_html_id }} class="row frame_scrapbook person-data">
+			<div class="upper_left hidden-xs"></div>
+			<div class="upper_right hidden-xs"></div>
+			<div class="lower_left hidden-xs"></div>
+			<div class="lower_right hidden-xs"></div>
 			<hr class="fancy visible-xs-block">
-			<div class="row first-name">
-				<label class="col-sm-3 col-md-3 text-right">{{ label.first_name }}</label>
-				<p class="col-sm-9 col-md-9">{{ person.first_name }}</p>
+			<div class="rsvp_split_top col-md-12">
+				<div class="hidden-xs col-sm-3 rsvp_split_left text-center">
+					<div class="guest_number">
+						{{ forloop.counter }}
+					</div>
+					<br>
+				</div>
+				<div class="visible-xs-block col-xs-12 rsvp-title text-center">
+					Guest {{ forloop.counter }}
+				</div>
+				<div class="col-xs-12 col-sm-9 rsvp_split_right">
+					<div class="rsvp-row row first-name">
+						<label class="col-xs-12 col-sm-5 rsvp-label"><span class="glyphicon glyphicon-user img-circle"></span>&nbsp;&nbsp;{{ label.first_name }}</label>
+						<p class="col-xs-12 col-sm-7 rsvp-label-value">{{ person.first_name }}</p>
+					</div>
+					<div class="rsvp-row last-name row">
+						<label class="col-xs-12 col-sm-5 rsvp-label"><span class="glyphicon glyphicon-user img-circle"></span>&nbsp;&nbsp;{{ label.last_name }}</label>
+						<p class="col-xs-12 col-sm-7 rsvp-label-value">{{ person.last_name }}</p>
+					</div>
+					<div class="rsvp-row dietary-concerns row" data-field="dietary-concerns">
+						<label class="col-xs-12 col-sm-5 rsvp-label"><span class="glyphicon glyphicon-cutlery img-circle"></span>&nbsp;&nbsp;{{ label.dietary_concerns }}</label>
+						<p class="col-xs-12 col-sm-7 rsvp-label-value">{{ person.dietary_concerns }}</p>
+					</div>
+					<div class="rsvp-row email row" data-field="email">
+						<label class="col-xs-12 col-sm-5 rsvp-label"><span class="glyphicon glyphicon-envelope img-circle"></span>&nbsp;&nbsp;{{ label.email}}</label>
+						<p class="col-xs-12 col-sm-7 rsvp-label-value">{{ person.email }}</p>
+					</div>
+					<div class="rsvp-row updates row">
+						<label class="col-xs-12 col-sm-5 rsvp-label"><span class="glyphicon glyphicon-bullhorn img-circle"></span>&nbsp;&nbsp;{{ label.updates }}</label>
+						<p class="col-xs-12 col-sm-7 rsvp-label-value">
+							{% if person.updates %}
+							yes
+							{% else %}
+							no
+							{% endif %}
+						</p>
+					</div>
+				</div>
 			</div>
-			<div class="row last-name">
-				<label class="col-sm-3 col-md-3 text-right">{{ label.last_name }}</label>
-				<p class="col-sm-9 col-md-9">{{ person.last_name }}</p>
-			</div>
-			<div class="row dietary-concerns" data-field="dietary-concerns">
-				<label class="col-sm-3 col-md-3 text-right">{{ label.dietary_concerns }}</label>
-				<p class="col-sm-9 col-md-9">{{ person.dietary_concerns }}</p>
-			</div>
-			<div class="row email">
-				<label class="col-sm-3 col-md-3 text-right">{{ label.email}}</label>
-				<p class="col-sm-9 col-md-9">{{ person.email }}</p>
-			</div>
-			<div class="row updates">
-				<label class="col-sm-3 col-md-3 text-right">{{ label.updates }}</label>
-				<p class="col-sm-9 col-md-9">
-					{% if person.updates %}
-					yes
-					{% else %}
-					no
-					{% endif %}
-				</p>
-			</div>
-			<div class="col-sm-12 col-md-12 col-lg-12 text-right">
-				<p>
-					<a data-toggle="modal" data-target="#form-modal" href="{{ person.get_absolute_update_url }}"><button class="btn btn-info">Edit</button></a>
-					<a data-toggle="modal" data-target="#form-modal" href="{{ person.get_absolute_delete_url }}"><button class="btn btn-danger">Delete</button></a>
-				</p>
+			<div class="col-sm-12 text-center rsvp_split_bottom">
+				<a data-toggle="modal" data-target="#form-modal" href="{{ person.get_absolute_update_url }}">
+					<button class="btn wedding_button rsvp-button">
+						<span class="glyphicon glyphicon-pencil"></span>&nbsp;
+						Edit
+					</button>
+				</a>
+				<a data-toggle="modal" data-target="#form-modal" href="{{ person.get_absolute_delete_url }}">
+					<button class="btn wedding_button rsvp-button">
+						<span class="glyphicon glyphicon-remove"></span>&nbsp;
+						Delete
+					</button>
+				</a>
 			</div>
 		</div>
 		{% endfor %}

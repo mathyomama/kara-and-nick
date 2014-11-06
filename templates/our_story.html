@@ -1,56 +1,52 @@
 {% extends "base.html" %}
 
 {% block letter_content %}
-<div class="col-md-12">
-	<center>
-		<div class="pagetitle">
-	<br>
-			Our Story
-			<hr class="fancy" width=75%>
+<div class="pagetitle text-center">
+	Our Story
+	<hr class="fancy" width=75%>
+</div>
+
+<br>
+{% for video_clip in our_story_entries %}
+<div class="modal fade" id="{{ forloop.counter}}-modal" tabindex="-1" role="dialog" aria-labelledby="modal-title" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+				<div class="text-center">
+					{{ video_clip.question}}
+				</div>
+			</div>
+			<div class="modal-body">
+				<br>
+				<div class="text-center">
+					<iframe width="560" height="315" src="//www.youtube.com/embed/4r7wHMg5Yjg" frameborder="0" allowfullscreen></iframe>
+					<hr >
+				</div>
+				<div class="video_clip_transcript text-center">
+					Transcript
+					<br>
+					{{ video_clip.transcript}}
+				</div>
+			</div>
 		</div>
-	</center>
-	<br>
-	<script>
-	function toggle_visibility(id) {
-		var videos = document.getElementsByClassName("video-div");
-		for(var i = 0; i < videos.length; i++)
-		{
-			videos[i].style.visibility="hidden";
-			videos[i].style.display="none";
-		}
-		visible_video = document.getElementById(id);
-		visible_video.style.visibility="visible";
-		visible_video.style.display="block";
-	}	
-	</script>
-	<div class="col-md-3">
-	{% for video_clip in our_story_entries %}
-	<div class="our_story_link_text">
-	<a href="#" onclick="toggle_visibility('video_{{ forloop.counter }}');">{{ video_clip.question }}</a>
-</div>
-	<br>
-	{% endfor %}
-</div>
-<div class="col-md-9">
-	{% for video_clip in our_story_entries %}
-	<div class="video-div" height=100% id='video_{{ forloop.counter }}'>
-		<div class="video_clip_question_title_text">
-			<center>
-		{{ video_clip.question}}
-	</center>
 	</div>
-	<br>
-		<center>
-		<video  height=100% style="height:299; width:252; -webkit-mask-box-image: url(http://3-dreams-of-black.googlecode.com/git/archive/_s/heart.svg)" autoplay>
-			<source  height=100% src="movie.mp4" type="video/mp4">
-		</video>
-	</center>
-	</div>	
-	{% endfor %}
 </div>
-	<!--
+{% endfor %}
+<div class="col-md-12">
+	{% for video_clip in our_story_entries %}
+	<div class="col-md-4 col-sm-6 col-xs-12 text-center">
+		<a data-toggle="modal" data-target="#{{ forloop.counter }}-modal">
+			<img class="img-circle our_story_image" width="100%" src="../static/img/seal.png">
+			<div class="our_story_link_text">
+					{{ video_clip.question }}
+			</div>
+		</a>
 		<hr>
-			<iframe width="100%" style="position:absolute; z-index:-2;"src="//www.youtube.com/embed/QZmZFeZxEKI?autoplay=0&showinfo=0&controls=0" frameborder="0" allowfullscreen></iframe>
-	-->
+	</div>
+	{% if forloop.counter|divisibleby:"3" %}
+	<div class="clearfix visible-md-block"></div>
+	{% endif %}
+	{% endfor %}
 </div>
 {% endblock %}

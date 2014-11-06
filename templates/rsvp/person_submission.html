@@ -1,29 +1,52 @@
-<div class="row person-data" data-id="id">
+<div data-id=id class="row frame_scrapbook person-data">
+	<div class="upper_left hidden-xs"></div>
+	<div class="upper_right hidden-xs"></div>
+	<div class="lower_left hidden-xs"></div>
+	<div class="lower_right hidden-xs"></div>
 	<hr class="fancy visible-xs-block">
-	<div class="row first-name">
-		<label class="col-sm-3 col-md-3 text-right">First Name</label>
-		<p class="col-sm-9 col-md-9" data-content="first-name"></p>
+	<div class="rsvp_split_top col-md-12">
+		<div class="hidden-xs col-sm-3 rsvp_split_left text-center">
+			<div class="guest_number" data-content-text="last"></div>
+			<br>
+		</div>
+		<div class="visible-xs-block col-xs-12 rsvp-title text-center" data-content-append="last">
+			Guest 
+		</div>
+		<div class="col-xs-12 col-sm-9 rsvp_split_right">
+			<div class="rsvp-row row first-name">
+				<label class="col-xs-12 col-sm-5 rsvp-label"><span class="glyphicon glyphicon-user img-circle"></span>&nbsp;&nbsp;First Name</label>
+				<p class="col-xs-12 col-sm-7 rsvp-label-value" data-content-text="first-name"></p>
+			</div>
+			<div class="rsvp-row last-name row">
+				<label class="col-xs-12 col-sm-5 rsvp-label"><span class="glyphicon glyphicon-user img-circle"></span>&nbsp;&nbsp;Last Name</label>
+				<p class="col-xs-12 col-sm-7 rsvp-label-value" data-content-text="last-name"></p>
+			</div>
+			<div class="rsvp-row dietary-concerns row" data-field="dietary-concerns">
+				<label class="col-xs-12 col-sm-5 rsvp-label"><span class="glyphicon glyphicon-cutlery img-circle"></span>&nbsp;&nbsp;Dietary Concerns</label>
+				<p class="col-xs-12 col-sm-7 rsvp-label-value" data-content-text="dietary-concerns"></p>
+			</div>
+			<div class="rsvp-row email row" data-field="email">
+				<label class="col-xs-12 col-sm-5 rsvp-label"><span class="glyphicon glyphicon-envelope img-circle"></span>&nbsp;&nbsp;Email</label>
+				<p class="col-xs-12 col-sm-7 rsvp-label-value" data-content-text="email"></p>
+			</div>
+			<div class="rsvp-row updates row">
+				<label class="col-xs-12 col-sm-5 rsvp-label"><span class="glyphicon glyphicon-bullhorn img-circle"></span>&nbsp;&nbsp;Updates</label>
+				<p class="col-xs-12 col-sm-7 rsvp-label-value" data-content-text="updates" data-format="booleanToString"></p>
+			</div>
+		</div>
 	</div>
-	<div class="row last-name">
-		<label class="col-sm-3 col-md-3 text-right">Last Name</label>
-		<p class="col-sm-9 col-md-9" data-content="last-name"></p>
-	</div>
-	<div class="row dietary-concerns">
-		<label class="col-sm-3 col-md-3 text-right">Dietary Concerns</label>
-		<p class="col-sm-9 col-md-9" data-content="dietary-concerns"></p>
-	</div>
-	<div class="row email">
-		<label class="col-sm-3 col-md-3 text-right">Email</label>
-		<p class="col-sm-9 col-md-9" data-content="email"></p>
-	</div>
-	<div class="row updates">
-		<label class="col-sm-3 col-md-3 text-right">Updates</label>
-		<p class="col-sm-9 col-md-9" data-content="updates" data-format="booleanToString"></p>
-	</div>
-	<div class="col-sm-12 col-md-12 col-lg-12 text-right">
-		<p>
-			<a data-toggle="modal" data-target="#form-modal"  data-href="update_url"><button class="btn btn-info">Edit</button></a>
-			<a data-toggle="modal" data-target="#form-modal"  data-href="delete_url"><button class="btn btn-danger">Delete</button></a>
-		</p>
+	<div class="col-sm-12 text-center rsvp_split_bottom">
+		<a data-toggle="modal" data-target="#form-modal" data-href="update_url">
+			<button class="btn wedding_button rsvp-button">
+				<span class="glyphicon glyphicon-pencil"></span>&nbsp;
+				Edit
+			</button>
+		</a>
+		<a data-toggle="modal" data-target="#form-modal" data-href="delete_url">
+			<button class="btn wedding_button rsvp-button">
+				<span class="glyphicon glyphicon-remove"></span>&nbsp;
+				Delete
+			</button>
+		</a>
 	</div>
 </div>

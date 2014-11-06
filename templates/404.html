@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block menu %}
+{% if user.is_authenticated %}
+{{ block.super }}
+{% endif %}
+{% endblock %}
+
+{% block whole_content %}
+<div class="container whole_container">
+	<div class="col-xs-12 invitation-outer">
+		<div class="col-xs-12 invitation-inner">
+			<div class="row text-center">
+				<h2>You 404'ed!!! How could you&#8253;</h2>
+			</div>
+			<div class="row">
+				<div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
+					<div class="frame_scrapbook">
+						<img src="{% static 'img/sad_niko.jpg' %}" width="100%">
+						<div class="upper_left"></div>
+						<div class="upper_right"></div>
+						<div class="lower_left"></div>
+						<div class="lower_right"></div>
+					</div>
+				</div>
+			</div>
+			<div class="row text-center">
+				<h2>Maybe you should stop staring at a screen and go outside.</h2>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock whole_content %}

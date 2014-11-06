@@ -3,13 +3,14 @@
 {% load static %}
 
 {% block stylesheets %}
-<link href="{% static 'css/welcome.css' %}">
+<link href="{% static 'css/welcome.css' %}" rel="stylesheet">
 {% endblock stylesheets %}
 
 {% block letter_content %}
+<div class="welcome_title text-center">Welcome</div>
+<hr class="fancy" width=75%>
 <div class="header col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-6">
-	<div class="welcome_title"><font face="Sacramento">Welcome</font></div>
-	<br>
+	<hr>
 	<div class="frame_scrapbook">
 		<img src="../media/{{ greeting.image }}" width="100%">
 		<div class="upper_left"></div>
@@ -18,15 +19,14 @@
 		<div class="lower_right"></div>
 	</div>
 </div>
-<div id="note-container" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-	<div class="welcome_text">
+<div id="note-container" class="col-xs-12 col-sm-offset-1 col-sm-10">
+	<div class="welcome_text text-justify">
 		{{ greeting.description | safe }}
 	</div>
 	<br>
-	<div class="signature">
-		Kara and Nick
+	<div class="signature text-right">
+		-Kara and Nick
 	</div>
-	<hr>
 	{% comment "Weather and Updates" %}
 	<b>Updates:</b>
 	<div id="updates" class="col-sm-12 col-md-12">

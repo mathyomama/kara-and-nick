@@ -5,26 +5,31 @@
 	<p class="intro text-justify">
 		{{ side_menu }}
 	</p>
-	<div class="col-sm-6 col-md-12">
-		<a href="/guestbook/">
-			<div class="post guestbook text-center">
-				Guestbook
-			</div>
-		</a>
-	</div>
-	<div class="col-sm-6 col-md-12">
-		<a class="modal-button" href="/guestbook/create/" data-toggle="modal" data-target="#form-modal">
-			<div class="post create text-center">
-				Create Post
-			</div>
-		</a>
-	</div>
-	<div class="col-sm-6 col-md-12">
-		<a href="/guestbook/{{ user.username }}/edit/">
-			<div class="post edit text-center">
-				Edit Post
-			</div>
-		</a>
+	<div class="options text-center">
+		<div class="option col-sm-4 col-md-12">
+			<a href="/guestbook/">
+				<button class="btn wedding_button">
+					<span class="glyphicon glyphicon-book"></span>&nbsp;
+					Guestbook
+				</button>
+			</a>
+		</div>
+		<div class="option col-sm-4 col-md-12">
+			<a class="modal-button" href="/guestbook/create/" data-toggle="modal" data-target="#form-modal">
+				<button class="btn wedding_button"> 
+					<span class="glyphicon glyphicon-plus"></span>&nbsp;
+					Create Post
+				</button>
+			</a>
+		</div>
+		<div class="option col-sm-4 col-md-12">
+			<a href="/guestbook/{{ user.username }}/edit/">
+				<button class="btn wedding_button">
+					<span class="glyphicon glyphicon-pencil"></span>&nbsp;
+					Edit Post
+				</button>
+			</a>
+		</div>
 	</div>
 	{% endblock side_menu %}
 </div>

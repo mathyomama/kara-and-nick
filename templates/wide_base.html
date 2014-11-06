@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block whole_content %}
+<div class="container whole-container">
+	<div class="col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-0 col-md-12 invitation-outer">
+		<div class="col-xs-12 invitation-inner">
+			<img class="flourish-corner-tl" width=90px src = "/static/img/corner_flourish.png">
+			<img class="flourish-corner-tr" width=90px src = "/static/img/corner_flourish.png">
+			<div id="top-side" class="col-xs-12">
+				{% block top_side %}
+				{% endblock top_side %}
+			</div>
+			<div id="left-side" class="hidden-xs hidden-sm col-md-4">
+				{% block left_side %}
+				{% endblock left_side %}
+			</div>
+			<div id="right-side" class="col-xs-12 col-md-8">
+				{% block right_side %}
+				{% endblock right_side %}
+			</div>
+			<img class="flourish-corner-br" width=90px src = "/static/img/corner_flourish.png">
+			<img class="flourish-corner-bl" width=90px src = "/static/img/corner_flourish.png">
+		</div>
+	</div>
+</div>
+{% endblock whole_content %}

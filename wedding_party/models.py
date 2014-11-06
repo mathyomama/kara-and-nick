@@ -9,12 +9,11 @@ class PartyMember(models.Model):
                         ('MATRON_OF_HONOR', 'Matron of Honor'),
                         ('BEST_MAN', 'Best Man'),
                         ('BRIDESMAID', 'Bridesmaid'),
+                        ('JR_BRIDESMAID', 'Jr. Bridesmaid'),
                         ('GROOMSMAN', 'Groomsman'),
                         ('RING_BEARER', 'Ring Bearer'),
                         ('COIN_BEARER', 'Coin Bearer'),
                         ('FLOWER_GIRL', 'Flower girl'),
-                        ('USHER', 'Usher'),
-                        ('SPONSOR', 'Sponsor'),
                         (None, 'Responsibility'),
                         )
         responsibility = models.CharField(max_length=20, choices=RESPONSIBILITIES)

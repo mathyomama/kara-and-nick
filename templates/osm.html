@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<head>
+   <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5/leaflet.css" />
+   <script src="http://cdn.leafletjs.com/leaflet-0.5/leaflet.js"></script>
+   
+   
+   
+   
+
+
+<style>
+
+#map {
+  position:absolute;
+  top:0;
+  bottom:0;
+  right:0;
+  left:0;
+}
+
+</style>
+</head>
+<body>
+
+        <div id="map" style="width: 100%px; height: 500px"></div>
+
+<script>
+
+
+
+var map = L.map('map').setView([27.952, -82.466], 13);
+
+L.tileLayer('http://{s}.tile.stamen.com/terrain/{z}/{x}/{y}.jpg', {
+    maxZoom: 18,
+    attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under <a href="http://creativecommons.org/licenses/by-sa/3.0">CC BY SA</a>.'
+}).addTo(map);
+
+
+var marker_1 = L.marker([27.9242896, -82.2707417]);
+marker_1.bindPopup("<a href='http://www.yelp.com/biz/thai-x-press-cafe-brandon-2' target='_blank'>Thai X-Press Cafe</a>");
+map.addLayer(marker_1)
+
+var marker_2 = L.marker([28.2599935, -82.4749844]);
+marker_2.bindPopup("<a href='http://www.yelp.com/biz/capital-tacos-land-o-lakes' target='_blank'>Capital Tacos</a>");
+map.addLayer(marker_2)
+
+var marker_3 = L.marker([27.9603147, -82.5183189]);
+marker_3.bindPopup("<a href='http://www.yelp.com/biz/eddie-vs-prime-seafood-tampa' target='_blank'>Eddie V's Prime Seafood</a>");
+map.addLayer(marker_3)
+
+var marker_4 = L.marker([27.936914, -82.301908]);
+marker_4.bindPopup("<a href='http://www.yelp.com/biz/south-pacific-grill-brandon' target='_blank'>South Pacific Grill</a>");
+map.addLayer(marker_4)
+
+var marker_5 = L.marker([27.8940866, -82.7368829]);
+marker_5.bindPopup("<a href='http://www.yelp.com/biz/tias-authentic-latin-food-largo' target='_blank'>Tia's Authentic Latin Food</a>");
+map.addLayer(marker_5)
+
+var marker_6 = L.marker([27.9143228, -82.5057247]);
+marker_6.bindPopup("<a href='http://www.yelp.com/biz/kombo-kitchen-tampa-2' target='_blank'>Kombo Kitchen</a>");
+map.addLayer(marker_6)
+
+var marker_7 = L.marker([27.9169828, -82.4942262]);
+marker_7.bindPopup("<a href='http://www.yelp.com/biz/osteria-natalina-tampa' target='_blank'>Osteria Natalina</a>");
+map.addLayer(marker_7)
+
+var marker_8 = L.marker([28.0694938, -82.6304182]);
+marker_8.bindPopup("<a href='http://www.yelp.com/biz/fresh-bites-tampa' target='_blank'>Fresh Bites</a>");
+map.addLayer(marker_8)
+
+var marker_9 = L.marker([28.0363515, -82.4224574]);
+marker_9.bindPopup("<a href='http://www.yelp.com/biz/pizza-squared-tampa' target='_blank'>Pizza Squared</a>");
+map.addLayer(marker_9)
+
+var marker_10 = L.marker([28.130256, -82.364945]);
+marker_10.bindPopup("<a href='http://www.yelp.com/biz/oakleys-grille-tampa' target='_blank'>Oakley's Grille</a>");
+map.addLayer(marker_10)
+
+var marker_11 = L.marker([27.9609932, -82.4445997]);
+marker_11.bindPopup("<a href='http://www.yelp.com/biz/fuma-bella-tampa' target='_blank'>Fuma Bella</a>");
+map.addLayer(marker_11)
+
+var marker_12 = L.marker([27.771666, -82.636035]);
+marker_12.bindPopup("<a href='http://www.yelp.com/biz/jannus-live-st-petersburg' target='_blank'>Jannus Live</a>");
+map.addLayer(marker_12)
+
+var marker_13 = L.marker([27.911317, -82.518272]);
+marker_13.bindPopup("<a href='http://www.yelp.com/biz/toast-wine-and-cafe-tampa-2' target='_blank'>Toast Wine & Cafe</a>");
+map.addLayer(marker_13)
+
+var marker_14 = L.marker([27.950547, -82.458882]);
+marker_14.bindPopup("<a href='http://www.yelp.com/biz/the-hub-bar-tampa' target='_blank'>The Hub Bar</a>");
+map.addLayer(marker_14)
+
+var marker_15 = L.marker([27.776005, -82.632233]);
+marker_15.bindPopup("<a href='http://www.yelp.com/biz/the-canopy-st-petersburg' target='_blank'>The Canopy</a>");
+map.addLayer(marker_15)
+
+var marker_16 = L.marker([28.0117641, -82.7893924]);
+marker_16.bindPopup("<a href='http://www.yelp.com/biz/kellys-dunedin' target='_blank'>Kelly's</a>");
+map.addLayer(marker_16)
+
+var marker_17 = L.marker([27.9968054, -82.5788861]);
+marker_17.bindPopup("<a href='http://www.yelp.com/biz/bilmar-station-tampa-2' target='_blank'>Bilmar Station</a>");
+map.addLayer(marker_17)
+
+var marker_18 = L.marker([27.769472, -82.3932084]);
+marker_18.bindPopup("<a href='http://www.yelp.com/biz/incognito-lounge-apollo-beach' target='_blank'>Incognito Lounge</a>");
+map.addLayer(marker_18)
+
+var marker_19 = L.marker([27.926515, -82.482758]);
+marker_19.bindPopup("<a href='http://www.yelp.com/biz/ciros-speakeasy-and-supper-club-tampa' target='_blank'>Ciro's Speakeasy and Supper Club</a>");
+map.addLayer(marker_19)
+
+var marker_20 = L.marker([27.9618637, -82.4418738]);
+marker_20.bindPopup("<a href='http://www.yelp.com/biz/the-castle-tampa' target='_blank'>The Castle</a>");
+map.addLayer(marker_20)
+
+var marker_21 = L.marker([27.9487903, -82.4615567]);
+marker_21.bindPopup("<a href='http://www.yelp.com/biz/curtis-hixon-waterfront-park-tampa' target='_blank'>Curtis Hixon Waterfront Park</a>");
+map.addLayer(marker_21)
+
+var marker_22 = L.marker([27.9202129, -82.4938758]);
+marker_22.bindPopup("<a href='http://www.yelp.com/biz/painting-with-a-twist-tampa' target='_blank'>Painting with a Twist</a>");
+map.addLayer(marker_22)
+
+var marker_23 = L.marker([27.4895281, -82.5733937]);
+marker_23.bindPopup("<a href='http://www.yelp.com/biz/arts-and-eats-restaurant-and-gallery-bradenton' target='_blank'>Arts & Eats Restaurant & Gallery</a>");
+map.addLayer(marker_23)
+
+var marker_24 = L.marker([27.7712273, -82.7176925]);
+marker_24.bindPopup("<a href='http://www.yelp.com/biz/freefall-theatre-st-petersburg' target='_blank'>freeFall Theatre</a>");
+map.addLayer(marker_24)
+
+var marker_25 = L.marker([27.765971, -82.6313909]);
+marker_25.bindPopup("<a href='http://www.yelp.com/biz/the-dali-museum-st-petersburg' target='_blank'>The Dali Museum</a>");
+map.addLayer(marker_25)
+
+var marker_26 = L.marker([27.7480089, -82.6645469]);
+marker_26.bindPopup("<a href='http://www.yelp.com/biz/artpool-gallery-st-petersburg-3' target='_blank'>ARTpool Gallery</a>");
+map.addLayer(marker_26)
+
+var marker_27 = L.marker([27.936149, -82.4759443]);
+marker_27.bindPopup("<a href='http://www.yelp.com/biz/ashworth-artisan-chocolate-tampa' target='_blank'>Ashworth Artisan Chocolate</a>");
+map.addLayer(marker_27)
+
+var marker_28 = L.marker([27.7896783, -82.6807458]);
+marker_28.bindPopup("<a href='http://www.yelp.com/biz/painting-with-a-twist-st-petersburg' target='_blank'>Painting with a Twist</a>");
+map.addLayer(marker_28)
+
+var marker_29 = L.marker([28.011633, -82.79002]);
+marker_29.bindPopup("<a href='http://www.yelp.com/biz/art-from-the-heart-cafe-dunedin-2' target='_blank'>Art From the Heart Cafe</a>");
+map.addLayer(marker_29)
+
+var marker_30 = L.marker([27.7896783, -82.6807458]);
+marker_30.bindPopup("<a href='http://www.yelp.com/biz/craftsman-house-gallery-and-cafe-saint-petersburg' target='_blank'>Craftsman House Gallery & Cafe</a>");
+map.addLayer(marker_30)
+
+var marker_31 = L.marker([27.9286592, -82.5061622]);
+marker_31.bindPopup("<a href='http://www.yelp.com/biz/fresh-threads-tampa-3' target='_blank'>Fresh Threads</a>");
+map.addLayer(marker_31)
+
+var marker_32 = L.marker([27.9358058, -82.4760635]);
+marker_32.bindPopup("<a href='http://www.yelp.com/biz/hyde-park-village-tampa' target='_blank'>Hyde Park Village</a>");
+map.addLayer(marker_32)
+
+var marker_33 = L.marker([27.9634228, -82.5206719]);
+marker_33.bindPopup("<a href='http://www.yelp.com/biz/international-plaza-and-bay-street-tampa' target='_blank'>International Plaza and Bay Street</a>");
+map.addLayer(marker_33)
+
+var marker_34 = L.marker([28.1885647, -82.3471751]);
+marker_34.bindPopup("<a href='http://www.yelp.com/biz/the-shops-at-wiregrass-wesley-chapel' target='_blank'>The Shops at Wiregrass</a>");
+map.addLayer(marker_34)
+
+var marker_35 = L.marker([27.803814, -82.63891]);
+marker_35.bindPopup("<a href='http://www.yelp.com/biz/shop-the-saint-petersburg' target='_blank'>Shop the</a>");
+map.addLayer(marker_35)
+
+var marker_36 = L.marker([27.9372939, -82.4758347]);
+marker_36.bindPopup("<a href='http://www.yelp.com/biz/anthropologie-tampa' target='_blank'>Anthropologie</a>");
+map.addLayer(marker_36)
+
+var marker_37 = L.marker([28.0827577, -82.4595465]);
+marker_37.bindPopup("<a href='http://www.yelp.com/biz/ravens-and-rockers-tampa' target='_blank'>Ravens and Rockers</a>");
+map.addLayer(marker_37)
+
+var marker_38 = L.marker([27.9364467, -82.475928]);
+marker_38.bindPopup("<a href='http://www.yelp.com/biz/lululemon-athletica-tampa-2' target='_blank'>lululemon athletica</a>");
+map.addLayer(marker_38)
+
+var marker_39 = L.marker([27.7857496, -82.7832772]);
+marker_39.bindPopup("<a href='http://www.yelp.com/biz/johns-pass-village-st-petersburg' target='_blank'>John's Pass Village</a>");
+map.addLayer(marker_39)
+
+var marker_40 = L.marker([27.9195262, -82.3270162]);
+marker_40.bindPopup("<a href='http://www.yelp.com/biz/kohls-department-stores-brandon' target='_blank'>Kohl's Department Stores</a>");
+map.addLayer(marker_40)
+
+var marker_41 = L.marker([27.9358058, -82.4760635]);
+marker_41.bindPopup("<a href='http://www.yelp.com/biz/hyde-park-village-tampa' target='_blank'>Hyde Park Village</a>");
+map.addLayer(marker_41)
+
+var marker_42 = L.marker([27.774687, -82.635874]);
+marker_42.bindPopup("<a href='http://www.yelp.com/biz/fit2run-the-runners-superstore-st-petersburg-2' target='_blank'>Fit2Run, The Runner's Superstore</a>");
+map.addLayer(marker_42)
+
+var marker_43 = L.marker([28.070247, -82.457737]);
+marker_43.bindPopup("<a href='http://www.yelp.com/biz/shooters-world-tampa' target='_blank'>Shooters World</a>");
+map.addLayer(marker_43)
+
+var marker_44 = L.marker([28.08006, -82.506679]);
+marker_44.bindPopup("<a href='http://www.yelp.com/biz/carrollwood-bicycle-emporium-tampa' target='_blank'>Carrollwood Bicycle Emporium</a>");
+map.addLayer(marker_44)
+
+var marker_45 = L.marker([27.9360309, -82.4752515]);
+marker_45.bindPopup("<a href='http://www.yelp.com/biz/fitniche-hyde-park-tampa' target='_blank'>Fitniche - Hyde Park</a>");
+map.addLayer(marker_45)
+
+var marker_46 = L.marker([27.9364467, -82.475928]);
+marker_46.bindPopup("<a href='http://www.yelp.com/biz/lululemon-athletica-tampa-2' target='_blank'>lululemon athletica</a>");
+map.addLayer(marker_46)
+
+var marker_47 = L.marker([27.9634228, -82.5206719]);
+marker_47.bindPopup("<a href='http://www.yelp.com/biz/fit2run-the-runners-superstore-tampa-2' target='_blank'>Fit2Run, The Runner's Superstore</a>");
+map.addLayer(marker_47)
+
+var marker_48 = L.marker([27.9499964, -82.5051119]);
+marker_48.bindPopup("<a href='http://www.yelp.com/biz/performance-bicycle-tampa' target='_blank'>Performance Bicycle</a>");
+map.addLayer(marker_48)
+
+var marker_49 = L.marker([27.449719, -82.45524]);
+marker_49.bindPopup("<a href='http://www.yelp.com/biz/aegis-tactical-lakewood-ranch' target='_blank'>Aegis Tactical</a>");
+map.addLayer(marker_49)
+
+var marker_50 = L.marker([27.8774651, -82.5004919]);
+marker_50.bindPopup("<a href='http://www.yelp.com/biz/depth-perception-dive-center-tampa' target='_blank'>Depth Perception Dive Center</a>");
+map.addLayer(marker_50)
+
+
+
+
+
+
+</script>
+
+</body>

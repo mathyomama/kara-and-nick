@@ -1,6 +1,31 @@
 #instructions {
 	margin: 10px 0;
 }
+.guest_number
+{
+	width:100px;
+	height:100px;
+	border-radius:50%;
+	font-size:50px;
+	color:#fff;
+	line-height:100px;
+	text-align:center;
+	background:rgba(0,0,0,.1);
+	margin: 0 auto;
+}
+
+.rsvp-title {
+	margin-bottom: 10px;
+}
+
+.rsvp-row {
+	margin-left: 0px;
+	text-align: left;
+}
+
+.rsvp-label {
+	text-align: left;
+}
 
 #add-button-row {
 	margin: 10px 0;
@@ -8,8 +33,21 @@
 
 .person-data {
 	margin: 20px 0;
-	padding: 10px 0;
-	border: inset black;
+	padding: 20px 0;
+	border: 2px;
+	border-color: #8f0000;
+}
+
+.rsvp_split_top {
+	margin-top: 20px;
+}
+
+.rsvp_split_bottom {
+	margin-bottom: 20px;
+}
+
+.email {
+	word-wrap: break-word;
 }
 
 #rsvp-picture {
@@ -32,5 +70,31 @@ p.error {
 	.person-data {
 		border: 0;
 		margin: 0;
+		padding: 0px;
+	}
+
+	.rsvp-row {
+		margin-right: 0px;
+	}
+
+	.rsvp_split_right,
+	.rsvp-label,
+	.rsvp-label-value {
+		padding: 0;
+	}
+
+	.rsvp_split_bottom {
+		margin: 0 -15px;
+	}
+
+	.rsvp-button {
+		width: 100px;
+	}
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+	#add-button-row {
+		position: relative;
+		z-index: 1000;
 	}
 }

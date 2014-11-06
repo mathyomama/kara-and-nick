@@ -3,12 +3,27 @@
 {% block letter_content %}
 <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5/leaflet.css" />
 <script src="http://cdn.leafletjs.com/leaflet-0.5/leaflet.js"></script>
-<center>
-<div class="pagetitle">
-	<br>
+<div class="pagetitle text-center">
 	Things to do
 <hr class="fancy" width=75%>
 </div>
-</center>
+<br>
+<div class="to_do_title_text text-center">
+	Our Suggestions
+</div>
+<br>
+<div class="our_suggestions text-center">
+	{% for suggestion in suggestions %}
+	{% endfor %}
+</div>
+
+<br>
+<div class="to_do_title_text text-center">
+	YELP Suggestions
+</div>
+<br>
+<div class="leaflet_map text-center">
 {{ source | safe }}
+</div>
+<hr>
 {% endblock %}

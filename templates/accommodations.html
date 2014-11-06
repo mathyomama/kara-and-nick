@@ -1,27 +1,28 @@
 {% extends "base.html" %}
 
 {% block letter_content %}
-
-<center>
-<br>
-<div class="pagetitle">Accommodations</div>
+<div class="pagetitle text-center">Accommodations</div>
 <hr class="fancy" width=75%>
 {% for accommodation in accommodations %}
-
-<div class="accommodation_name_text">
-{{ accommodation.name }}
+<div class="accommodation_name_text text-center">
+	{{ accommodation.name }}
+	<br>
 </div>
-<br> 
-<a href="{{ accommodation.url }}">Book Your Room</a>
+<div class="text-center">
+	<a href="{{ accommodation.url }}">Book Your Room</a>
+</div>
 <hr>
-<img width=30% class="img-rounded " src="../../media/{{ accommodation.image1 }}">
-<img width=30% class="img-rounded " src="../../media/{{ accommodation.image2 }}">
-<img width=30% class="img-rounded " src="../../media/{{ accommodation.image3 }}">
-<br>
-<hr>
-</center>
-<div class="accommodation_description_text">
-	{{ accommodation.description | safe }}
+<div class="col-md-12 text-center">
+	<img class="img-circle " width="25%" src="../../media/{{ accommodation.image1 }}">
+	<img class="img-circle " width="25%" src="../../media/{{ accommodation.image2 }}">
+	<img class="img-circle" width="25%"  src="../../media/{{ accommodation.image3 }}">
+</div>
+<div class="">
+	<div class="accommodation_description_text col-xs-12 col-sm-10 col-sm-offset-1">
+		<br>
+		{{ accommodation.description | safe }}
+		<br>
+	</div>
 </div>
 {% endfor %}
 

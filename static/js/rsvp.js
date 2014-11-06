@@ -42,13 +42,13 @@ $(function() {
 
 	// This is the create a person function and it takes form data from the server
 	function create_person(data) {
-		$('#submissions').loadTemplate($('#submission-template'), data, {prepend: true});
+		$('#submissions').loadTemplate($('#submission-template'), data, {append: true});
 	}
 
 	// This is the update a person function and it takes form data from the server
 	function update_person(data) {
 		var container = $('#' + data['old_id']);
-		container.find('div.row').each(function(index, elem) {
+		container.find('div.rsvp-row').each(function(index, elem) {
 			var $elem = $(elem);
 			var field = $elem.attr('class').split(' ')[1];
 			$elem.find('p').text(data[field]);

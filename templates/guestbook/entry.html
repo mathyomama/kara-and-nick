@@ -1,17 +1,18 @@
 {% extends "guestbook/base.html" %}
 
 {% block right_side %}
+{{ block.super }}
 <div class="col-md-12">
 	<div class="row">
 		<div class="row">
-			<div class="col-xs-6 text-left">
+			<div class="col-xs-6 text-left guestbook_entry_name">
 				<span class="top-line">{{ entry.name }}</span>
 			</div>
-			<div class="col-xs-6 text-right">
+			<div class="col-xs-6 text-right guestbook_entry_location">
 				<span class="top-line">{{ entry.location }}</span>
 			</div>
 		</div>
-		<div class="row">
+		<div class="row guestbook_entry_note">
 			<div class="col-xs-12 text-justify">
 				<p>{{ entry.note }}</p>
 			</div>

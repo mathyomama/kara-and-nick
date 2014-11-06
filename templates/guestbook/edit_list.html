@@ -1,29 +1,32 @@
 {% extends "guestbook/base.html" %}
 
 {% block right_side %}
-<div class="table-responsive">
-	<table class="table">
-		<thead>
-			<tr>
-				<th>Person</th>
-				<th>Location</th>
-				<th class="hidden-xs">Note</th>
-				<th>Update?</th>
-				<th>Delete?</th>
-			</tr>
-		</thead>
-		<tbody>
-			{% for entry in user_entries %}
-			<tr id="{{ entry.get_html_id }}">
-				<td class="name">{{ entry.name }}</td>
-				<td class="location">{{ entry.location }}</td>
-				<td class="note hidden-xs">{{ entry.note|truncatewords:15 }}</td>
-				<td><div><a class="update" href="{{ entry.get_absolute_update_url }}" data-toggle="modal" data-target="#form-modal">Update</a></div></td>
-				<td><div><a class="delete" href="{{ entry.get_absolute_delete_url }}" data-toggle="modal" data-target="#form-modal">Delete</a></div></td>
-			</tr>
-			{% endfor %}
-		</tbody>
-	</table>
+{{ block.super }}
+<div class="row">
+	<div class="table-responsive col-xs-12">
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Person</th>
+					<th>Location</th>
+					<th class="hidden-xs">Note</th>
+					<th>Update?</th>
+					<th>Delete?</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for entry in user_entries %}
+				<tr id="{{ entry.get_html_id }}">
+					<td class="name">{{ entry.name }}</td>
+					<td class="location">{{ entry.location }}</td>
+					<td class="note hidden-xs">{{ entry.note|truncatewords:15 }}</td>
+					<td><div><a class="update" href="{{ entry.get_absolute_update_url }}" data-toggle="modal" data-target="#form-modal">Update</a></div></td>
+					<td><div><a class="delete" href="{{ entry.get_absolute_delete_url }}" data-toggle="modal" data-target="#form-modal">Delete</a></div></td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
 </div>
 {% endblock right_side %}
 

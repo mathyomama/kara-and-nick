@@ -1,25 +1,31 @@
 {% extends "base.html" %}
 
 {% block letter_content %}
-<div class="text-center">
-	<div class="pagetitle">
-		<br>
-		Gallery
-		<hr class="fancy" width=75%>
+<div class="col-xs-12 col-lg-offset-1 col-lg-10">
+	<div class="text-center">
+		<div class="pagetitle">
+			Gallery
+			<hr class="fancy" width=75%>
+		</div>
+		<div class="gallery_instructions">
+			To add pictures to the gallery, upload them to Instagram with the hashtag<br><a href="#" class="hashtag_text">#baino_kardos</a>
+		</div>
+		{% for pic_url, pic_caption in pic_list%}
+		<hr>
+		<div class="frame_scrapbook">
+			<img width="100%" src="{{ pic_url }}"><br>
+			<div class="upper_left"></div>
+			<div class="upper_right"></div>
+			<div class="lower_left"></div>
+			<div class="lower_right"></div>
+		</div>
+		<div class="pic_caption_text">
+		<hr class="fancy">
+			{{ pic_caption }}
+		<hr class="fancy">
+		</div>
+		<hr>
+	{% endfor %}
 	</div>
-	{% for pic_url, pic_caption in pic_list%}
-	<hr>
-	<div class="frame_scrapbook">
-		<img width="100%" src="{{ pic_url }}"><br>
-		<div class="upper_left"></div>
-		<div class="upper_right"></div>
-		<div class="lower_left"></div>
-		<div class="lower_right"></div>
-	</div>
-	<div class="pic_caption_text">
-		{{ pic_caption }}
-	</div>
-	<hr>
-{% endfor %}
 </div>
 {% endblock letter_content %}

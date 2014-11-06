@@ -9,15 +9,34 @@
 	border-radius: 4px;
 	font-size: 2em;
 }
+a.text-primary:hover
+{
 
-a .post {
-	color:#111111;
+	color:#BF0000;
+}
+a.text-primary
+{
+
+	color:#8F0000;
+}
+a {
+
+	color:#8F0000;
 }
 
 a:hover {
-	text-decoration: none;
+	color:#BF0000;
 }
 
+.options {
+	margin-top: 10px;
+}
+
+.option {
+	margin: 5px 0px;
+}
+
+/*
 .guestbook {
 	background-color: #cccccc;
 }
@@ -41,7 +60,7 @@ a:hover {
 .edit:hover {
 	background-color: #C02929;
 }
-
+*/
 .update{
 	color: #0047FF;
 }
@@ -62,19 +81,32 @@ span.top-line {
 	font-size: 1.8vw;
 }
 
+@media (max-width: 767px) {
+	.guestbook-button {
+		width: 100px;
+	}
+
+	span.top-line {
+		font-size: 1.1em;
+	}
+}
+
 @media (max-width: 991px) and (min-width: 768px) {
 	.post {
 		margin-bottom: 20px;
 	}
 
+	.wedding_button {
+		width: 125px;
+	}
+
 	span.top-line {
-		font-weight: bold;
+		font-size: 1.3em;
 	}
 }
 
-@media (max-width: 768px) {
+@media (max-width: 991px) {
 	span.top-line {
-		font-size: 1em;
 		font-weight: bold;
 	}
 }
@@ -93,18 +125,6 @@ span.top-line {
 		margin-top: 20px;
 	}
 
-	.clickable {
-		padding: 4px;
-		border: 2px solid transparent;
-		border-radius: 2px;
-		cursor: pointer;
-	}
-
-	.clickable:hover {
-		border: 2px solid #999999;
-		background-color: #e3e3e3;
-	}
-
 	.fixed {
 		position: fixed;
 		border-width: 0 2px 0 0;
@@ -115,5 +135,17 @@ span.top-line {
 		-ms-border-image: -ms-linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0)) 1 100%;
 		-o-border-image: -o-linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0)) 1;
 		border-image: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,1), rgba(0,0,0,0)) 1;
+	}
+	
+	.clickable {
+		padding: 4px;
+		border: 2px solid transparent;
+		border-radius: 2px;
+		cursor: pointer;
+	}
+
+	.clickable:hover {
+		border: 2px solid #999999;
+		background-color: #e3e3e3;
 	}
 }

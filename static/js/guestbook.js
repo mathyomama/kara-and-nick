@@ -30,7 +30,7 @@ $(function() {
 		});
 		var div_height = $side_menu.height();
 		// The 90 is from the top and bottom margins for the invitation and body
-		var height = $("body").height() - 90, width = +$side_menu.width() + 30;
+		var height = $("body").height() - 90 - 20, width = +$side_menu.width() + 30;
 		console.log(height, width);
 		if (height > div_height) {
 			$side_menu.addClass('fixed').css({
@@ -78,9 +78,11 @@ $(function() {
 		fix_side();
 	});
 
-	$('.clickable').click(function(e) {
-		$(this).find('a')[0].click();
-	});
+	if (matchMedia('not handheld and (max-width: 991px)').matches) {
+		$('.clickable').click(function(e) {
+			$(this).find('a')[0].click();
+		});
+	}
 
 	fix_side();
 
@@ -105,6 +107,7 @@ $(function() {
 
 	// This is the update a person function and it takes form data from the server
 	function update_note(data) {
+		var ex_length = 15
 		var container = $('#' + data['old_id']);
 		container.find('td').filter(function(index) {
 			if (index < 3) {
@@ -114,7 +117,12 @@ $(function() {
 			var $elem = $(elem);
 			var field = $elem.attr('class').split(' ')[0];
 			if (field === "note") {
-				$elem.text(data[field].split(/\s/).slice(0, 16).join(" ") + " ...");
+				var note_array = data[field].split(/\s/);
+				var excerpt = note_array.slice(0, ex_length + 1).join(" ");
+				if (note_array.length > ex_length) {
+					excerpt += " ...";
+				}
+				$elem.text(excerpt);
 			} else {
 				$elem.text(data[field]);
 			}

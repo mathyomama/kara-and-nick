@@ -1,30 +1,31 @@
-{% extends "base.html" %}
+{% extends "wide_base.html" %}
 
 {% load static %}
+
 
 {% block stylesheets %}
 <link href="{% static 'css/rsvp.css' %}" rel="stylesheet">
 {% endblock stylesheets %}
 
-{% block whole_content %}
-<div class="container whole-container">
-	<div class="col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-0 col-md-12 invitation-outer">
-		<div class="col-xs-12 invitation-inner">
-			<div id="left-side" class="hidden-xs col-md-4">
-				{% block left_side %}
-				<div id="rsvp-picture" class="col-md-12 col-lg-12">
-					<img src="{% static 'img/rsvp2.jpg' %}" width="100%">
-				</div>
-				{% endblock left_side %}
-			</div>
-			<div id="right-side" class="col-xs-12 col-md-8">
-				{% block right_side %}
-				{% endblock right_side %}
-			</div>
-		</div>
+
+{% block left_side %}
+<div id="rsvp-picture" class="col-md-12">
+	<img class="img-rounded" src="{% static 'img/rsvp2.jpg' %}" width="100%">
+	<hr>
+	<div id="instructions" class="text-justify">
+		<p>{{ instructions|safe }}</p>
+	</div>
+	<div id="add-button-row" class="text-center">
+		<a data-toggle="modal" data-target="#form-modal" href="/rsvp/create/">
+			<button id="add-button" class="btn wedding_button">
+				<span class="glyphicon glyphicon-plus"></span>
+				Add Reservation
+			</button>
+		</a>
 	</div>
 </div>
-{% endblock whole_content %}
+{% endblock left_side %}
+
 
 {% block javascript %}
 <script src="{% static 'js/jquery.loadTemplate-1.4.4.min.js' %}"></script>

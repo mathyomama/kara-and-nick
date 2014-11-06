@@ -1,6 +1,7 @@
 {% extends "guestbook/base.html" %}
 
 {% block right_side %}
+{{ block.super }}
 <div class="container-fluid">
 	{% if form %}
 	<form id="guestbook-form" class="form-horizontal" role="role" method="post" action="{{ request.get_full_path }}">
@@ -38,12 +39,12 @@
 		</div>
 		{% endfor %}
 		<div class="col-sm-offset-3 col-sm-9">
-			<button type="submit" class="btn btn-primary">submit</button>
+			<button type="submit" class="btn wedding_button">submit</button>
 		</div>
 	</form>
 	{% else %}
 	<p>{{ not_allowed_message }}</p>
-	<button type="button" class="btn btn-danger" data-dismiss="modal">Dismiss</button>
+	<button type="button" class="btn wedding_button" data-dismiss="modal">Dismiss</button>
 	{% endif %}
 </div>
 {% endblock right_side %}

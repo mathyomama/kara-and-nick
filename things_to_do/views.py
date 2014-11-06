@@ -8,7 +8,7 @@ import os.path
 import time
 from geopy.geocoders import GoogleV3
 
-OSM_FILE = ""
+OSM_FILE = "templates/osm.html"
 CONSUMER_KEY = ""
 CONSUMER_SECRET = ""
 TOKEN = "" 
@@ -36,7 +36,7 @@ def make_osm_page():
             address, (latitude, longitude) = geolocator.geocode(business_address)
             map_osm.simple_marker(location=[latitude, longitude], popup=str("<a href='"+business['url']+"' target='_blank'>"+business['name']+"</a>"))
     #map_osm.lat_lng_popover()
-    map_osm.create_map(path='/tmp/osm.html')
+    map_osm.create_map(path='templates/osm.html')
     return
 
 

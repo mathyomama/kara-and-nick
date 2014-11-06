@@ -32,14 +32,14 @@
 					{% endfor %}
 					{{ field.help_text }}
 					<label for="{{ field.id_for_label }}">{{ field.label }}</label>
-					<input class="form-control" type="{{ field.field.widget.input_type }}" maxlength="15" size="15" id="{{ field.auto_id }}" name="{{ field.html_name }}" placeholder="{{ field.name }}">
+					<input class="form-control" type="{{ field.field.widget.input_type }}" maxlength="15" size="15" id="{{ field.auto_id }}" name="{{ field.html_name }}" placeholder="{{ field.name }}" autofocus>
 				</div>
 				{% endfor %}
 
 				<input class="btn btn-default" type="submit" value="Sign In" />
 			</form>
 			<hr>
-			<img id="bottom-img" src="http://2.bp.blogspot.com/-__zncDPPNfg/UlNtSpuaY1I/AAAAAAAAArw/KgGyw4jIQpE/s1600/divider_big_transparent1+(1).png" width="100%">
+			<img id="bottom-img" src="/static/img/login_flourish.png" width="100%">
 		</div>
 	</div>
 </div>

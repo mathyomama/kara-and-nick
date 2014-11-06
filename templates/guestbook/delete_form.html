@@ -1,6 +1,7 @@
 {% extends 'guestbook/base.html' %}
 
 {% block right_side %}
+{{ block.super }}
 <form id="guestbook-form" action="{{ entry.get_absolute_delete_url }}" method="post">
 	{% csrf_token %}
 	<h2>{{ form_message }}</h2>
@@ -21,7 +22,7 @@
 			</div>
 		</div>
 	</div>
-	<button id="submit" class="btn btn-danger" type="submit">yes</button>
-	<button class="btn btn-default" type="button" data-dismiss="modal">cancel</button>
+	<button id="submit" class="btn wedding_button" type="submit">yes</button>
+	<button class="btn wedding_button" type="button" data-dismiss="modal">cancel</button>
 </form>
 {% endblock right_side %}

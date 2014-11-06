@@ -1,41 +1,32 @@
-{% extends "base.html" %}
+{% extends "wide_base.html" %}
 
 {% load static %}
+
 
 {% block stylesheets %}
 <link href="{% static 'css/guestbook.css' %}" rel="stylesheet">
 {% endblock stylesheets %}
 
-{% block whole_content %}
-<div class="container whole-container">
-	<div class="col-xs-12 invitation-outer">
-		<div class="col-xs-12 invitation-inner">
-			<div id="left-side" class="col-md-4">
-				{% block left_side %}
-				<div class="hidden-xs hidden-sm">
-					{% include 'guestbook/side_menu.html' %}
-				</div>
-				{% endblock left_side %}
-			</div>
-			<div id="right-side" class="col-md-8">
-				{% block heading %}
-				<div class="text-center">
-					<h1>Guestbook</h1>
-				</div>
-				<hr class="fancy">
-				{% endblock heading %}
 
-				<div class="hidden-md hidden-lg">
-					{% include 'guestbook/side_menu.html' %}
-				</div>
-
-				{% block right_side %}
-				{% endblock right_side %}
-			</div>
-		</div>
-	</div>
+{% block left_side %}
+<div class="hidden-xs hidden-sm">
+	{% include 'guestbook/side_menu.html' %}
 </div>
-{% endblock whole_content %}
+{% endblock left_side %}
+
+
+{% block right_side %}
+{% block heading %}
+<div class="pagetitle text-center">
+	Guestbook
+</div>
+<hr class="fancy">
+{% endblock heading %}
+<div class="hidden-md hidden-lg">
+	{% include 'guestbook/side_menu.html' %}
+</div>
+{% endblock right_side %}
+
 
 {% block modal %}
 <div class="modal fade" id="form-modal" tabindex="-1" role="dialog" aria-labelledby="modal-title" aria-hidden="true">
@@ -45,6 +36,7 @@
 	</div>
 </div>
 {% endblock modal %}
+
 
 {% block javascript %}
 <script src="{% static 'js/jquery.loadTemplate-1.4.4.min.js' %}"></script>

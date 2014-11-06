@@ -1,9 +1,13 @@
 {% extends "guestbook/base.html" %}
 
 {% block right_side %}
+{{ block.super }}
+{% if guestbook_entries %}
 {% include 'guestbook/pagination.html' %}
+{% endif %}
 <div id="entries" class="col-xs-12">
 	{% for entry in guestbook_entries %}
+	<hr class="fancy visible-xs-block">
 	<div class="row clickable">
 		<div class="row">
 			<div class="col-xs-6 text-left">
@@ -21,7 +25,9 @@
 	</div>
 	{% endfor %}
 </div>
+{% if guestbook_entries %}
 {% include 'guestbook/pagination.html' %}
+{% endif %}
 {% endblock right_side %}
 
 {% block js_template %}

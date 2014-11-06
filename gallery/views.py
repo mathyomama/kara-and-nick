@@ -16,7 +16,7 @@ def index(request):
     context_dict = dict()
     api = InstagramAPI(client_id=CLIENT_ID, client_secret=CLIENT_SECRET)
     
-    pictures_with_tag = api.tag_recent_media(tag_name="diaosmith")
+    pictures_with_tag = api.tag_recent_media(tag_name="baino_kardos")
     pictures_with_tag = pictures_with_tag[0]
     pic_urls = []
     context_dict['pictures_with_tag'] = pictures_with_tag
