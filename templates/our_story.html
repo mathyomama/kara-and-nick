@@ -1,5 +1,4 @@
 {% extends "base.html" %}
-
 {% block letter_content %}
 <div class="pagetitle text-center">
 	Our Story
@@ -8,25 +7,27 @@
 
 <br>
 {% for video_clip in our_story_entries %}
-<div class="modal fade" id="{{ forloop.counter}}-modal" tabindex="-1" role="dialog" aria-labelledby="modal-title" aria-hidden="true">
+<div class="modal fade" id="{{ forloop.counter}}-modal" name="{{ forloop.counter}}-modal" tabindex="-1" role="dialog" aria-labelledby="modal-title" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
 				<div class="text-center">
-					{{ video_clip.question}}
+					<b>{{ video_clip.question}}</b>
 				</div>
 			</div>
 			<div class="modal-body">
 				<br>
 				<div class="text-center">
-					<iframe width="560" height="315" src="//www.youtube.com/embed/4r7wHMg5Yjg" frameborder="0" allowfullscreen></iframe>
+					<iframe width="560" height="315" src="//www.youtube.com/embed/{{ video_clip.video }}" frameborder="0" allowfullscreen></iframe>
 					<hr >
+
 				</div>
 				<div class="video_clip_transcript text-center">
 					Transcript
 					<br>
-					{{ video_clip.transcript}}
+					-
+					<!--{{ video_clip.transcript}}-->
 				</div>
 			</div>
 		</div>
@@ -35,18 +36,30 @@
 {% endfor %}
 <div class="col-md-12">
 	{% for video_clip in our_story_entries %}
-	<div class="col-md-4 col-sm-6 col-xs-12 text-center">
+	<div class="col-sm-6 col-xs-12 text-center">
 		<a data-toggle="modal" data-target="#{{ forloop.counter }}-modal">
-			<img class="img-circle our_story_image" width="100%" src="../static/img/seal.png">
-			<div class="our_story_link_text">
+			<div class="col-xs-12">
+			<br>
+			<img class="top img-circle our_story_image" width="100%" src="../media/{{ video_clip.image_thumbnail }}">
+			<br>
+			</div>
+			<div class="our_story_link_text col-xs-12">
 					{{ video_clip.question }}
 			</div>
 		</a>
 		<hr>
 	</div>
-	{% if forloop.counter|divisibleby:"3" %}
-	<div class="clearfix visible-md-block"></div>
-	{% endif %}
 	{% endfor %}
 </div>
 {% endblock %}
+
+{% block javascript %}
+<script type="text/javascript">
+{% for video_clip in our_story_entries %}
+$("#{{forloop.counter}}-modal").on('hidden.bs.modal', function () {
+	var i="#{{forloop.counter}}-modal";
+    $("#{{ forloop.counter}}-modal iframe").attr("src", $(i+' iframe').attr("src"));
+	});
+{% endfor %}
+</script>
+{% endblock javascript %}

@@ -9,17 +9,18 @@
 	{% for entry in guestbook_entries %}
 	<hr class="fancy visible-xs-block">
 	<div class="row clickable">
-		<div class="row">
-			<div class="col-xs-6 text-left">
-				<span class="top-line">{{ entry.name }}</span>
+		<div class="row top-line">
+			<div class="col-xs-6 col-sm-12 text-left">
+				<span class="guestbook_entry_name">{{ entry.name }}</span>
+				<span class="guestbook_entry_location hidden-xs"> ({{ entry.location }})</span>
 			</div>
-			<div class="col-xs-6 text-right">
-				<span class="top-line">{{ entry.location }}</span>
+			<div class="col-xs-6 visible-xs-block text-right">
+				<span class="guestbook_entry_location">{{ entry.location }}</span>
 			</div>
 		</div>
-		<div class="row">
+		<div class="row bottom-line">
 			<div class="col-xs-12 text-justify">
-				<p>{{ entry.note|truncatewords:50 }} <a href="{{ entry.get_absolute_url }}" class="text-primary">Read More</a></p>
+				<p class="guestbook_entry_note">{{ entry.note|truncatewords:50 }} <a href="{{ entry.get_absolute_url }}" class="text-primary">Read More</a></p>
 			</div>
 		</div>
 	</div>

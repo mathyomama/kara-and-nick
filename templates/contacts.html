@@ -8,12 +8,12 @@
 <div class="table-responsive">
 	<table class="table table-striped" style="text-align:center;">
 		<thead>
-			<td> Name </td>
-			<td> Email </td>
-			<td> Phone </td>
+			<td class="th_text"> Name </td>
+			<td class="th_text"> Email </td>
+			<td class="th_text"> Phone </td>
 		</thead>
 		<tbody>
-			{% for contact in contacts %}
+			{% for contact in contacts%}
 			<tr>
 				<td>
 					{{ contact.name }}

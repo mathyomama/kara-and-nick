@@ -11,7 +11,7 @@ def index(request):
         member.name = member.name.replace(' ','<br>')
     party_member_labels = list(PartyMember.RESPONSIBILITIES)
 
-    party_member_label_groupings = [[("MAID_OF_HONOR", "Maid of<br>Honor",4,12,4), ("MATRON_OF_HONOR","Matron of<br>Honor",4,12,4), ("BEST_MAN","Best<br>Man",4,12,4)], [("BRIDESMAID", "Bridesmaids",12,6,6)],[("JR_BRIDESMAID", "Junior Bridesmaids",12,6,6)],[("GROOMSMAN","Groomsmen",12,6,6)],[("RING_BEARER","Ring<br>Bearer",4,12,4), ("COIN_BEARER","Coin<br>Bearer",4,12,4),("FLOWER_GIRL", "Flower<br>Girl",4,12,4)]]
+    party_member_label_groupings = [[("MAID_OF_HONOR", "Maid of<br>Honor",6,12,6), ("MATRON_OF_HONOR","Matron of<br>Honor",6,12,6)], [("BRIDESMAID", "Bridesmaids",12,6,6)],[("JR_BRIDESMAID", "Junior Bridesmaids",12,6,6)],[("BEST_MAN","Best<br>Man",12,12,12)],[("GROOMSMAN","Groomsmen",12,6,6)],[("JR_GROOMSMAN","Junior Groomsmen",12,6,6)],[("RING_BEARER","Ring<br>Bearer",6,12,6),("COIN_BEARER","Coin<br>Bearer",6,12,6)],[("FLOWER_GIRL", "Flower<br>Girl",12,12,12)]]
     all_but_last = []
     for i in party_member_labels:
         if i != (None,"Responsibility"):

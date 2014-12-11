@@ -1,0 +1,17 @@
+@media (max-width:391px) {
+	div.outer-div {
+		margin: 0 auto;
+		overflow: visible;
+	}
+
+	div.inner-div {
+		position: relative;
+		float: right;
+		right: 50%;
+	}
+
+	div.inner-div img {
+		position: relative;
+		right: -50%;
+	}
+}

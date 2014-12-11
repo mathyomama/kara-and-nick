@@ -1,0 +1,22 @@
+.heading {
+}
+
+.gallery-group {
+	margin-top: 20px;
+}
+
+.gallery-image {
+	margin: 15px 0;
+}
+
+.gallery-image img {
+	cursor: pointer;
+}
+
+.modal-image {
+	margin-top: 40px;
+}
+
+.gallery_button {
+	width: 50px;
+}

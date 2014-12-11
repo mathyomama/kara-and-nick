@@ -21,6 +21,7 @@
 			<small class="text-danger">{{ error }}</small>
 			{% endfor %}
 			{% endif %}
+			<hr>
 			<form role="role" method="post" id="login" action="/login/">
 				{% csrf_token %}
 
@@ -38,6 +39,10 @@
 
 				<input class="btn btn-default" type="submit" value="Sign In" />
 			</form>
+
+			{% if form.non_field_errors %}
+			<br><small class="text-danger">Problems logging in? <a href="mailto:kara.and.nick.webmasters@gmail.com">Email us!</a></small>
+			{% endif %}
 			<hr>
 			<img id="bottom-img" src="/static/img/login_flourish.png" width="100%">
 		</div>

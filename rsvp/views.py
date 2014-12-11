@@ -18,7 +18,7 @@ class InitialView(TemplateView):
     through AJAX, so the user will most likely be staying on this page.
     """
     template_name = 'rsvp/initial.html'
-    instructions = "Please RSVP below. Click the &quotAdd Person&quot button to add a reservation. You may edit or delete a reservation, as well. In the reservation form please provide a <em>first name</em> and <em>last name</em>. You may optionally provide allergy infromation and your email for updates. This infromation won't be viewable by the public."
+    instructions = "Please RSVP below. Click the &quotAdd Person&quot button to add a reservation. You may edit or delete a reservation, as well. In the reservation form please provide a <em>first name</em> and <em>last name</em>. You may optionally provide allergy infromation and your email for updates. This infromation won't be viewable by the public. The added reservations will appear in the space to the right or below."
 
     def get(self, request):
         user_account = get_object_or_404(Account, user=request.user)

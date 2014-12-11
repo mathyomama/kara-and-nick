@@ -11,6 +11,7 @@ class PartyMember(models.Model):
                         ('BRIDESMAID', 'Bridesmaid'),
                         ('JR_BRIDESMAID', 'Jr. Bridesmaid'),
                         ('GROOMSMAN', 'Groomsman'),
+                        ('JR_GROOMSMAN', 'Jr. Groomsman'),
                         ('RING_BEARER', 'Ring Bearer'),
                         ('COIN_BEARER', 'Coin Bearer'),
                         ('FLOWER_GIRL', 'Flower girl'),

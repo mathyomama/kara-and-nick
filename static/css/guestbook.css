@@ -36,31 +36,6 @@ a:hover {
 	margin: 5px 0px;
 }
 
-/*
-.guestbook {
-	background-color: #cccccc;
-}
-
-.guestbook:hover {
-	background-color: #bbbbbb;
-}
-
-.create {
-	background-color: #6DB476;
-}
-
-.create:hover {
-	background-color: #43814B;
-}
-
-.edit {
-	background-color: #D43737;
-}
-
-.edit:hover {
-	background-color: #C02929;
-}
-*/
 .update{
 	color: #0047FF;
 }
@@ -86,8 +61,20 @@ span.top-line {
 		width: 100px;
 	}
 
-	span.top-line {
-		font-size: 1.1em;
+	.entry {
+		padding: 0;
+	}
+
+	.guestbook_entry_name {
+		font-size: 18px;
+	}
+
+	.guestbook_entry_location {
+		font-size: 16px;
+	}
+
+	.guestbook_entry_note {
+		font-size: 21px;
 	}
 }
 
@@ -100,14 +87,26 @@ span.top-line {
 		width: 125px;
 	}
 
-	span.top-line {
-		font-size: 1.3em;
+	.guestbook_entry_name {
+		font-size: 20px;
+	}
+
+	.guestbook_entry_location {
+		font-size: 18px;
+	}
+
+	.guestbook_entry_note {
+		font-size: 22px;
 	}
 }
 
 @media (max-width: 991px) {
+	.entry {
+		margin-top: 15px;
+	}
+
 	span.top-line {
-		font-weight: bold;
+		//font-weight: bold;
 	}
 }
 

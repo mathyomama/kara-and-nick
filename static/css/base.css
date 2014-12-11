@@ -9,10 +9,11 @@ a:hover {
 a {
 	color:#8F0000;
 }
+
 .wedding_button
 {
 	width:40%;
-	width:150px;
+	width:160px;
 	border:2px;
 	color:#eeeeee;
 	background-color:#8f0000;
@@ -24,7 +25,7 @@ a {
 	color:#ffffff;
 }
 .registry_item_image {
-	border:2px;
+	border:3px;
 	border-color:#aaaaaa;
 	border-style:solid;
 	width: 200px;
@@ -40,11 +41,11 @@ a {
 
 .accommodation_pic
 {
-	border:2px;
+	border:3px;
 	border-color:#aaaaaa;
 	border-style:solid;
-	width: 200px;
-	height: 200px;
+	width: 150px;
+	height: 150px;
 }
 
 .our_story_link_text {
@@ -53,17 +54,17 @@ a {
 
 .our_story_image
 {
-	border:2px;
+	border:3px;
 	border-color:#aaaaaa;
 	border-style:solid;
-	width: 100px;
-	height: 100px;
+	width: 150px;
+	height: 150px;
 	cursor: pointer;
 }
 
 .party_member_image
 {
-	border:2px;
+	border:3px;
 	border-color:#aaaaaa;
 	border-style:solid;
 	width: 150px;
@@ -73,8 +74,9 @@ a {
 
 .leaflet_map
 {
-	border:2px;
+	border:3px;
 	border-color:#aaaaaa;
+	border-style:solid;
 	width:80%;
 	margin: 0 auto;
 }
@@ -167,7 +169,6 @@ hr.fancy {
 
 .fancy {
 	line-height: 0.5;
-	text-align: center;
 	background-image: -webkit-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.35), rgba(0,0,0,0));
 	background-image:    -moz-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.35), rgba(0,0,0,0));
 	background-image:     -ms-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.35), rgba(0,0,0,0));
@@ -372,4 +373,22 @@ hr.flourish
 	position: absolute;
 	bottom: -13px;
 	left: -13px;
+}
+
+.cf {
+	position:relative;
+	margin:0 auto;
+}
+
+.cf img {
+	position:absolute;
+	left:0;
+	-webkit-transition: opacity 1s ease-in-out;
+	-moz-transition: opacity 1s ease-in-out;
+	-o-transition: opacity 1s ease-in-out;
+	transition: opacity 1s ease-in-out;
+}
+
+.cf img.top:hover {
+	opacity:0;
 }

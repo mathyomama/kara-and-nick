@@ -1,0 +1,15 @@
+ul.the-big-day {
+	padding-left: 0px;
+}
+
+@media (min-width: 992px) {
+	ul.the-big-day {
+		padding-right: 40px;
+	}
+}
+
+@media (max-width: 991px) {
+	.c_and_r_title_text {
+		margin-top: 15px;
+	}
+}

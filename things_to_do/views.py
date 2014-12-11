@@ -7,6 +7,7 @@ import datetime
 import os.path
 import time
 from geopy.geocoders import GoogleV3
+from .models import ThingsToDoEntry 
 
 OSM_FILE = "templates/osm.html"
 CONSUMER_KEY = ""
@@ -18,7 +19,8 @@ variable_assignment_file = open('/home/kara-nick-wedding/secret_keys.dat')
 variable_assignment_lines = variable_assignment_file.readlines()
 for variable in variable_assignment_lines:
     exec(variable)
-CATEGORIES = ["restaurants", "nightlife", "arts", "shopping", "active"]
+CATEGORIES = ["restaurants", "nightlife"]
+OUR_CATEGORIES = ["Restaurants", "Nightlife", "Activities"]
 
 def make_osm_page():
     context_dict = dict()
@@ -43,7 +45,9 @@ def make_osm_page():
 @login_required
 def index(request):
     # check if osm file exists
-    if os.path.isfile(OSM_FILE):
+    if not os.path.isfile(OSM_FILE):
+        make_osm_page()
+    '''
         # if it does exist, get the time it was created
         file_created_tuple = datetime.date.fromtimestamp(os.path.getmtime(OSM_FILE))
         # get today's date
@@ -56,6 +60,7 @@ def index(request):
             make_osm_page()
     else:
         make_osm_page()
+    '''
     source_file =  open(OSM_FILE)
     source_file_lines = source_file.readlines()
     source_file_html = ''.join(source_file_lines)
@@ -63,6 +68,9 @@ def index(request):
     source_file_html = source_file_html.replace("None","")
     context = RequestContext(request)
     context_dict = dict()
+    suggestions = ThingsToDoEntry.objects.all()
+    context_dict['suggestions']= suggestions
     context_dict['categories'] = CATEGORIES
+    context_dict['our_categories'] = OUR_CATEGORIES
     context_dict['source'] =  source_file_html 
     return render_to_response('things_to_do.html', context_dict, context)

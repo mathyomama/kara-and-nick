@@ -2,20 +2,19 @@
 
 {% block right_side %}
 {{ block.super }}
-<div class="col-md-12">
-	<div class="row">
-		<div class="row">
-			<div class="col-xs-6 text-left guestbook_entry_name">
-				<span class="top-line">{{ entry.name }}</span>
-			</div>
-			<div class="col-xs-6 text-right guestbook_entry_location">
-				<span class="top-line">{{ entry.location }}</span>
-			</div>
+<div class="col-xs-12 entry">
+	<div class="row top-line">
+		<div class="col-xs-6 col-sm-12 text-left">
+			<span class="guestbook_entry_name">{{ entry.name }}</span>
+			<span class="hidden-xs guestbook_entry_location"> ({{ entry.location }})</span>
 		</div>
-		<div class="row guestbook_entry_note">
-			<div class="col-xs-12 text-justify">
-				<p>{{ entry.note }}</p>
-			</div>
+		<div class="col-xs-6 visible-xs-block text-right">
+			<span class="guestbook_entry_location">{{ entry.location }}</span>
+		</div>
+	</div>
+	<div class="row bottom-line">
+		<div class="col-xs-12 text-justify">
+			<p class="guestbook_entry_note">{{ entry.note }}</p>
 		</div>
 	</div>
 </div>

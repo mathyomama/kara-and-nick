@@ -30,8 +30,8 @@ class Person(models.Model):
                 'rsvp-update',
                 kwargs={
                     'pk': self.pk,
-                    'first_name': self.first_name,
-                    'last_name': self.last_name,
+                    'first_name': removeBadChar(self.first_name),
+                    'last_name': removeBadChar(self.last_name),
                     },
                 )
     
@@ -40,8 +40,8 @@ class Person(models.Model):
                 'rsvp-delete',
                 kwargs={
                     'pk': self.pk,
-                    'first_name': self.first_name,
-                    'last_name': self.last_name,
+                    'first_name': removeBadChar(self.first_name),
+                    'last_name': removeBadChar(self.last_name),
                     },
                 )
 

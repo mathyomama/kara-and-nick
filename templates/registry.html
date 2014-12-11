@@ -17,11 +17,11 @@
 <div class="row">
 	<div class="col-md-12"><br></div>
 	<div class="registry-image col-sm-12 col-md-12 text-center" name="registry_image">
-		<a href="{{ registry_entry.url }}"><img class="img-circle registry_item_image" src="../media/{{ registry_entry.image }}" width=200px></a>
+		<a href="{{ registry_entry.url }}" target="_blank"><img class="img-circle registry_item_image" src="../media/{{ registry_entry.image }}" width=200px></a>
 	</div>
 	<div class="col-sm-12 col-sm-offset-0 col-md-offset-0 col-md-12 text-center registry_text">
 		<br>
-		<a href="{{ registry_entry.url }}">{{ registry_entry.name }}</a><br>
+		<a class="registry_link_text" href="{{ registry_entry.url }}" target="_blank">{{ registry_entry.name }}</a><br>
 		{{ registry_entry.description | safe }}<br>
 	</div>
 	<div class="col-md-12"><br></div>

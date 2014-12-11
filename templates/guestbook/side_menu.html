@@ -1,12 +1,12 @@
 {% load static %}
 
-<div id="side-menu" class="col-md-12">
+<div id="side-menu" class="col-xs-12">
 	{% block side_menu %}
 	<p class="intro text-justify">
 		{{ side_menu }}
 	</p>
 	<div class="options text-center">
-		<div class="option col-sm-4 col-md-12">
+		<div class="option col-xs-12 col-sm-4 col-md-12">
 			<a href="/guestbook/">
 				<button class="btn wedding_button">
 					<span class="glyphicon glyphicon-book"></span>&nbsp;
@@ -14,7 +14,7 @@
 				</button>
 			</a>
 		</div>
-		<div class="option col-sm-4 col-md-12">
+		<div class="option col-xs-12 col-sm-4 col-md-12">
 			<a class="modal-button" href="/guestbook/create/" data-toggle="modal" data-target="#form-modal">
 				<button class="btn wedding_button"> 
 					<span class="glyphicon glyphicon-plus"></span>&nbsp;
@@ -22,7 +22,7 @@
 				</button>
 			</a>
 		</div>
-		<div class="option col-sm-4 col-md-12">
+		<div class="option col-xs-12 col-sm-4 col-md-12">
 			<a href="/guestbook/{{ user.username }}/edit/">
 				<button class="btn wedding_button">
 					<span class="glyphicon glyphicon-pencil"></span>&nbsp;

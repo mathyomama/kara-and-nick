@@ -2,6 +2,10 @@
 
 {% load static %}
 
+{% block stylesheets %}
+<link href="{% static 'css/the_big_day.css' %}" rel="stylesheet">
+{% endblock stylesheets %}
+
 {% block top_side %}
 <div class="pagetitle text-center">
 	The Big Day
@@ -13,51 +17,10 @@
 	</div>
 </div>
 <div class="hidden-xs"><br></div>
-{% comment description %}
-<div class="col-sm-12 col-md-12" id="itinerary">
-	<div class="c_and_r_title_text text-center">
-		Ceremony and Reception
-	</div>
-	<div class="col-sm-12 col-md-12 text-center" id="itinerary entries">
-		{% for entry in  itinerary_entries %}
-		<div class="event_title_text text-center">
-			<a href="{{ entry.string_location_2 }}">{{ entry.title }}</a><br>
-		</div>
-		<div class="event_time_text text-center">
-			{{ entry.string_location_1 }}<br>
-			{{ entry.time }}<br>	
-			{{ entry.phone }}<br>	
-			{#<img class="img-rounded" src="../../media/{{ entry.image_desciptive }}"><br>#}
-		</div>
-		<div class="event_description_text text-center">
-			{{ entry.description }}<br>
-		</div>
-		<br>
-		{% endfor %}
-	</div>
-	<div class="c_and_r_title_text text-center">
-		What to Expect
-	</div>
-	<div class="col-sm-12 col-md-12" id="what_to_expect">
-		<div class="what_to_expect_title_text">
-		</div>
-		{% for entry in  what_to_expect_entries %}
-			{{ entry.title }}<br>
-			{{ entry.time }}<br>	
-			{{ entry.description }}<br>		
-		{% endfor %}
-		<div class="event_time_text text-center">
-			Formalwear<br>
-			Open bar<br>
-			Dancing<br>
-		</div>
-	</div>
-</div>
-{% endcomment %}
 {% endblock top_side %}
 
 {% block left_side %}
-<div class="col-sm-12 col-md-12 text-left">
+<div class="col-sm-12 col-md-12 text-center">
 	<div class="c_and_r_title_text">
 		Ceremony and Reception
 	</div>
@@ -98,17 +61,12 @@
 	<div class="c_and_r_title_text text-center">
 		What to Expect
 	</div>
-	<div id="what_to_expect">
-		<div class="what_to_expect_title_text">
-		</div>
-		{% for entry in  what_to_expect_entries %}
-			{{ entry.title }}<br>
-			{{ entry.time }}<br>	
-			{{ entry.description }}<br>		
-		{% endfor %}
-		<div class="event_time_text">
-			The attire will be formalwear (think dress to impress). There will be an open bar and dancing at the reception.<br>
-		</div>
+	<div id="what_to_expect" class="event_time_text">
+		<ul class="the-big-day">
+			<li>Please arrive 15-30 minutes before the start of the event. The ceremony will start promptly at 5:30 pm. You don't want to be THAT person who takes attention away from the groom and bride while they're making their vows.</li>
+			<li>This is a formal affair. Think dress to impress.</li>
+			<li>There will be an open bar. Please make driving arrangements according to your intended consumption.</li>
+			<li>There will be dancing at the reception so bring your dancing shoes.</li>
 	</div>
 </div>
 {% endblock right_side %}

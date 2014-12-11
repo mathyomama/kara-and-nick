@@ -12,14 +12,27 @@
 	Our Suggestions
 </div>
 <br>
-<div class="our_suggestions text-center">
-	{% for suggestion in suggestions %}
+<div class="our_suggestions col-xs-12">
+	{% for our_category in our_categories %}
+		<div class="col-xs-12 col-sm-4">
+			<b><div class="c_and_r_title_text text-center">{{ our_category }}</b></div>
+			<ul> 
+				{% for suggestion in suggestions %}
+					{% if suggestion.category == our_category %}
+					<li>
+						{{ suggestion.description }}
+					</li>
+					{% endif %}
+				{% endfor %}
+			</ul>
+		</div>
 	{% endfor %}
+	<br>
 </div>
-
-<br>
+<hr>
 <div class="to_do_title_text text-center">
-	YELP Suggestions
+<br>
+	Yelp's Suggestions
 </div>
 <br>
 <div class="leaflet_map text-center">
